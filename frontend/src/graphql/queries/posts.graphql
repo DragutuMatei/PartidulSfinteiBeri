@@ -1,0 +1,22 @@
+query Posts {
+  posts {
+    ...PostSnippet
+  }
+}
+
+# query Posts($limit: Int, $cursor: String) {
+#   posts(limit: $limit, cursor: $cursor) {
+#     id
+#     createdAt
+#     updatedAt
+#     title
+#     text
+#     textSnippet
+#     points
+#     creator {
+#       id
+#       username
+#       email
+#     }
+#   }
+# }
