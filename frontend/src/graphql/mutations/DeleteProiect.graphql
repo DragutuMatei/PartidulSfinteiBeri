@@ -1,0 +1,3 @@
+mutation DeleteProiect($id: Float!) {
+  deleteProiect(id: $id)
+}

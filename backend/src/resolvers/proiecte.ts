@@ -1,4 +1,5 @@
-import { MyContext } from './../types';
+import { isAuth } from './../middleware/isAuth';
+import { MyContext } from 'src/types';
 import {
     Arg,
     Ctx,
@@ -7,6 +8,7 @@ import {
     Mutation,
     Query,
     Resolver,
+    UseMiddleware,
 } from "type-graphql";
 import { Proiecte } from '../entities/Proiecte';
 
@@ -20,7 +22,6 @@ class ProiecteInput {
 
     @Field()
     sefId: number;
-
 }
 
 @Resolver()
@@ -52,10 +53,26 @@ export class ProiecteResolver {
     }
 
     @Query(() => [Proiecte])
+    @UseMiddleware(isAuth)
     async getAllProiecte(
-        @Arg("sefId") sefId: number
+        @Ctx() { req }: MyContext
     ): Promise<Proiecte[]> {
-        return await Proiecte.find({ where: { sefId } });
+        const proiecte = await Proiecte.find();
+
+        let pr = [] as Proiecte[];
+
+        console.log(req.session.userId);
+        proiecte.forEach(proiect => {
+            if (proiect.sefId == req.session.userId)
+                pr.push(proiect);
+            else if (proiect.userId.includes(req.session.userId!.toString())) {
+                pr.push(proiect);
+            }
+        });
+
+        return pr;
+
+        // return await Proiecte.find({ where: { userId:  } });
     }
 
 
@@ -72,4 +89,11 @@ export class ProiecteResolver {
 
         return true;
     }
+
+
+
+
+
+
 }
+

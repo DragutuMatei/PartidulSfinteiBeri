@@ -13,6 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProiecteResolver = void 0;
+const isAuth_1 = require("./../middleware/isAuth");
 const type_graphql_1 = require("type-graphql");
 const Proiecte_1 = require("../entities/Proiecte");
 let ProiecteInput = class ProiecteInput {
@@ -49,8 +50,18 @@ let ProiecteResolver = class ProiecteResolver {
         }
         return true;
     }
-    async getAllProiecte(sefId) {
-        return await Proiecte_1.Proiecte.find({ where: { sefId } });
+    async getAllProiecte({ req }) {
+        const proiecte = await Proiecte_1.Proiecte.find();
+        let pr = [];
+        console.log(req.session.userId);
+        proiecte.forEach(proiect => {
+            if (proiect.sefId == req.session.userId)
+                pr.push(proiect);
+            else if (proiect.userId.includes(req.session.userId.toString())) {
+                pr.push(proiect);
+            }
+        });
+        return pr;
     }
     async addUser(idUserAdd, proiectId) {
         const proiect = await Proiecte_1.Proiecte.findOne({ id: proiectId });
@@ -75,9 +86,10 @@ __decorate([
 ], ProiecteResolver.prototype, "deleteProiect", null);
 __decorate([
     (0, type_graphql_1.Query)(() => [Proiecte_1.Proiecte]),
-    __param(0, (0, type_graphql_1.Arg)("sefId")),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], ProiecteResolver.prototype, "getAllProiecte", null);
 __decorate([

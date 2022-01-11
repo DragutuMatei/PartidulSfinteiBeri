@@ -3,6 +3,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const Sedinte_1 = require("./entities/Sedinte");
+const Tasks_1 = require("./entities/Tasks");
 require("reflect-metadata");
 const proiecte_1 = require("./resolvers/proiecte");
 const Proiecte_1 = require("./entities/Proiecte");
@@ -19,6 +21,8 @@ const cors_1 = __importDefault(require("cors"));
 const typeorm_1 = require("typeorm");
 const User_1 = require("./entities/User");
 const path_1 = __importDefault(require("path"));
+const tasks_1 = require("./resolvers/tasks");
+const sedinte_1 = require("./resolvers/sedinte");
 const main = async () => {
     const conn = await (0, typeorm_1.createConnection)({
         type: "postgres",
@@ -28,7 +32,7 @@ const main = async () => {
         logging: true,
         migrations: [path_1.default.join(__dirname, "./migrations/*")],
         synchronize: true,
-        entities: [User_1.User, Proiecte_1.Proiecte]
+        entities: [User_1.User, Proiecte_1.Proiecte, Tasks_1.Tasks, Sedinte_1.Sedinte]
     });
     await conn.runMigrations();
     const app = (0, express_1.default)();
@@ -56,7 +60,7 @@ const main = async () => {
     }));
     const apolloServer = new apollo_server_express_1.ApolloServer({
         schema: await (0, type_graphql_1.buildSchema)({
-            resolvers: [user_1.UserResolver, proiecte_1.ProiecteResolver],
+            resolvers: [user_1.UserResolver, proiecte_1.ProiecteResolver, tasks_1.TasksResolver, sedinte_1.SedinteResolver],
             validate: false,
         }),
         plugins: [

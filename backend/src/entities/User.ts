@@ -1,6 +1,5 @@
 import { Field, Int, ObjectType } from "type-graphql";
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, BaseEntity, OneToMany } from 'typeorm';
-import { Proiecte } from "./Proiecte";
 
 @Entity()
 @ObjectType()

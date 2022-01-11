@@ -1,3 +1,5 @@
+import { Sedinte } from './entities/Sedinte';
+import { Tasks } from './entities/Tasks';
 import "reflect-metadata";
 import { ProiecteResolver } from './resolvers/proiecte';
 import { Proiecte } from './entities/Proiecte';
@@ -15,6 +17,8 @@ import cors from "cors";
 import { createConnection } from 'typeorm';
 import { User } from "./entities/User";
 import path from 'path';
+import { TasksResolver } from './resolvers/tasks';
+import { SedinteResolver } from './resolvers/sedinte';
 
 const main = async () => {
   const conn = await createConnection({
@@ -25,7 +29,7 @@ const main = async () => {
     logging: true,
     migrations: [path.join(__dirname, "./migrations/*")],
     synchronize: true,
-    entities: [User, Proiecte]
+    entities: [User, Proiecte, Tasks, Sedinte]
   });
 
   await conn.runMigrations();
@@ -63,7 +67,7 @@ const main = async () => {
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [UserResolver, ProiecteResolver],
+      resolvers: [UserResolver, ProiecteResolver, TasksResolver, SedinteResolver],
       validate: false,
     }),
     plugins: [

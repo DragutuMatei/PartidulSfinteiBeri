@@ -55,7 +55,12 @@ export class UserResolver {
     return false;
   }
 
-
+  @Query(() => User)
+  async getUser(
+    @Arg("id") id: number
+  ): Promise<User | undefined> {
+    return await User.findOne(id);
+  }
 
   @Mutation(() => UserResponse)
   async changePassword(

@@ -3,7 +3,7 @@ import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @ObjectType()
 @Entity()
-export class Tasks extends BaseEntity{
+export class Tasks extends BaseEntity {
     @Field()
     @PrimaryGeneratedColumn()
     id: number;
@@ -19,4 +19,21 @@ export class Tasks extends BaseEntity{
     @Field()
     @Column()
     sefId: number;
+
+    @Field()
+    @Column()
+    proiectId: number;
+
+    @Field()
+    @Column({ nullable: true })
+    points?: number;
+
+    @Field({ defaultValue: false })
+    @Column({ default: false })
+    finish: boolean;
+
+
+    @Field()
+    @Column({ nullable: true })
+    deadline: string;
 }

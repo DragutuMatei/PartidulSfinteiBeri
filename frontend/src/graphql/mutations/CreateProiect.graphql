@@ -1,0 +1,8 @@
+mutation CreateProiect($values: ProiecteInput!){
+  createProiect(values:$values){
+    id
+    userId
+    numeleProiectului
+    sefId
+  }
+}

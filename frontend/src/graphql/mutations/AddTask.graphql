@@ -1,0 +1,10 @@
+mutation AddTask($values:TaskInput!){
+  addTask(values:$values){
+    id
+    task
+    userId
+    sefId
+    proiectId
+    deadline
+  }
+}

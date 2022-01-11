@@ -1,0 +1,8 @@
+query GetAllProiecte($sefId:Float!) {
+  getAllProiecte(sefId:$sefId){
+    id
+    userId
+    numeleProiectului
+    sefId
+  }
+}
