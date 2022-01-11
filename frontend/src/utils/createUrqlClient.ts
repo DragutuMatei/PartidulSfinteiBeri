@@ -1,5 +1,4 @@
 import { gql } from 'graphql-tag';
-import { CreatePostMutation, PostsQuery, PostsDocument, VoteMutation, VoteMutationVariables } from './../generated/graphql';
 import { Resolver } from '@urql/exchange-graphcache';
 import { dedupExchange, Exchange, fetchExchange, stringifyVariables } from "urql";
 import {
@@ -128,40 +127,13 @@ export const createUrqlClient = (ssrExchange: any) => ({
             },
             updates: {
                 Mutation: {
-                    vote: (_result, args, cache, info) => {
-                        // cache.invalidate("Query", "posts", {});
-
-                        const { postId, value } = args as VoteMutationVariables;
-                        const data = cache.readFragment(
-                            gql`
-                                fragment
-                            `
-                        );
-
-                        // betterUpdatedQuery<VoteMutation, PostsQuery>(
-                        //     cache,
-                        //     { query: PostsDocument },
-                        //     _result,
-                        //     (result, query) => {
-                        //         console.log("info: ", info);
-                        //         console.log("result: ", result);
-                        //         console.log("query: ", query);
-                        //         return query;
-                        //     }
-                        // );
-
-                    },
-                    createPost: (_result, args, cache, info) => {
+                    create: (_result, args, cache, info) => {
                         const allFiedls = cache.inspectFields('Query');
                         const fieldInfos = allFiedls.filter((info) => info.fieldName === 'posts');
 
                         fieldInfos.forEach((fields) => {
                             cache.invalidate("Query", "posts", fields.arguments);
                         })
-
-                        //sau:
-                        // cache.invalidate("Query", "posts", {});
-
                     },
                     logout: (_result, args, cache, info) => {
                         betterUpdatedQuery<LogoutMutation, GetLoggedUserQuery>(

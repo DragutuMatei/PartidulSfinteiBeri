@@ -52,6 +52,16 @@ UserResponse = __decorate([
     (0, type_graphql_1.ObjectType)()
 ], UserResponse);
 let UserResolver = class UserResolver {
+    async checkIfExists(email) {
+        const user = await User_1.User.findOne({ email });
+        if (user) {
+            return true;
+        }
+        return false;
+    }
+    async getUser(email) {
+        return await User_1.User.findOneOrFail({ email });
+    }
     async changePassword(token, newPassword, { redis, req }) {
         if (newPassword.length < 3) {
             return {
@@ -124,6 +134,7 @@ let UserResolver = class UserResolver {
             user = result.raw[0];
         }
         catch (err) {
+            console.log(err);
             if (err.code === "23505") {
                 return {
                     errors: [
@@ -187,6 +198,20 @@ let UserResolver = class UserResolver {
         }));
     }
 };
+__decorate([
+    (0, type_graphql_1.Query)(() => Boolean),
+    __param(0, (0, type_graphql_1.Arg)("email")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], UserResolver.prototype, "checkIfExists", null);
+__decorate([
+    (0, type_graphql_1.Query)(() => User_1.User),
+    __param(0, (0, type_graphql_1.Arg)("email")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], UserResolver.prototype, "getUser", null);
 __decorate([
     (0, type_graphql_1.Mutation)(() => UserResponse),
     __param(0, (0, type_graphql_1.Arg)('token')),

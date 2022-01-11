@@ -1,0 +1,7 @@
+mutation AddSedinta($values:SedintaInput!){
+  addSedinta(values:$values){
+    id
+    topic
+    data
+  }
+}

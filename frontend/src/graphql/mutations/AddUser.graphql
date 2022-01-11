@@ -1,0 +1,4 @@
+mutation AddUser($idUserAdd:Float!, $proiectId:Float!){
+  addUser(idUserAdd:$idUserAdd, proiectId:$proiectId)
+  
+}

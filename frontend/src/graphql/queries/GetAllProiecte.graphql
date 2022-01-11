@@ -1,0 +1,8 @@
+query GetAllProiecte{
+  getAllProiecte{
+    id
+    userId
+    numeleProiectului
+    sefId
+  }
+}
