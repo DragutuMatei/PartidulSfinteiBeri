@@ -9,6 +9,7 @@ type InputFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   name: string;
   placeholder: string;
   type?: string;
+  class?: string;
 };
 
 export const InputField: React.FC<InputFieldProps> = (props) => {
@@ -18,6 +19,7 @@ export const InputField: React.FC<InputFieldProps> = (props) => {
     <FormControl isInvalid={!!error}>
       <FormLabel htmlFor={field.name}>{props.label}</FormLabel>
       <Input
+        className={props.class}
         id={field.name}
         type={props.type ? props.type : "text"}
         {...field}

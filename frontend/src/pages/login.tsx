@@ -46,17 +46,14 @@ const Login: React.FC<{}> = ({}) => {
                   name="usernameOrEmail"
                   placeholder="usernameOrEmail"
                   label="usernameOrEmail"
+                  class="asd"
                 />
                 <InputField
                   name="password"
                   placeholder="password"
                   label="password"
                   type="password"
-                />
-                <br />
-                <NextLink href="/forget-password">
-                  <Link>forgot password?</Link>
-                </NextLink>
+                /> 
                 <br />
                 <Button type="submit" isLoading={isSubmitting}>
                   Login
