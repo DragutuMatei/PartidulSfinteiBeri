@@ -1,61 +1,204 @@
-import React from 'react'
-import { Layout } from '../components/Layout';
+import React from "react";
+import { Layout_Dash } from "../components/Layout_Dash";
 
-interface dashboardProps {
-
-}
+interface dashboardProps {}
 
 const dashboard: React.FC<dashboardProps> = ({}) => {
-    return (
-        <Layout>
-            <div className="dashboard-container">
-                <div className="project">
-                    <div className="project-text">
-                    <h4>Project Name</h4>
-                    <h5>Company Name</h5>
-                    </div>
-                    <div className="progress">
-                        <span>In progress</span>
-                    </div>
-                    <div className="priority">
-                        <span>Medium Priority</span>
-                    </div>
-                    <div className="members-list">
-                        <div className="member">
-                            <img src={require("../assets/images/img1.png").default} />
-                        </div>
-                        <div className="member">
-                            <img src={require("../assets/images/img1.png").default} />
-                        </div>
-                        <div className="member">
-                            <img src={require("../assets/images/img1.png").default} />
-                        </div>
-                        <div className="member">
-                            <img src={require("../assets/images/img1.png").default} />
-                        </div>
-                    </div>
-                    <div className="due-date">
-                        <h4>Due to : August 23</h4>
-                    </div>
-                </div>
-                <div className="project">
-                    
-                </div>
-                <div className="tasks">
-                    
-                </div>
-                <div className="timeline">
-                    
-                </div>
-                <div className="calendar">
-                    
-                </div>
-                <div className="messages">
-                    
-                </div>
+  return (
+    <Layout_Dash>
+      <div className="projects-container">
+        <div className="add-project">
+          <div className="description">
+            <textarea
+              placeholder="Write a description..."
+              id="description"
+            ></textarea>
+          </div>
+          <div className="user">
+            <div className="email-check">
+              <div>
+                <input
+                  type="email"
+                  placeholder="Enter user's email..."
+                  id="email"
+                />
+              </div>
+              <button className="check">Check</button>
             </div>
-        </Layout>
-        );
-}
+            <button className="add">Add project</button>
+          </div>
+        </div>
+        <hr className="between" />
+        <div className="projects-list">
+          <div className="project">
+            <div className="description">
+              <h4>
+                descrierea unui proiectdescrierea unui proiectdescrierea unui
+                proiectdescrierea unui proiectdescrierea unui proiectdescrierea
+                unui proiectdescrierea unui proiectdescrierea unui
+                proiectdescrierea unui proiectdescrierea unui proiectdescrierea
+                unui proiectdescrierea unui proiectdescrierea unui
+                proiectdescrierea unui proiectdescrierea unui proiectdescrierea
+                unui proiectdescrierea unui proiectdescrierea unui
+                proiectdescrierea unui proiect
+              </h4>
+              <span>finalizat / in progres</span>
+            </div>
+            <div className="membri-lider">
+              <div className="membrii">
+                <h4>Membrii:</h4>
+                <ul>
+                  <li>morte99@aol.com</li>
+                  <li>gigolo12@yahoo.com</li>
+                  <li>petrecu_mare_boss01@gmail.com</li>
+                </ul>
+              </div>
+              <hr />
+              <div className="lider">
+                <h4>Lider:</h4>
+                <ul>
+                  <li>ciocanmarian1@yahoo.com</li>
+                </ul>
+              </div>
+            </div>
+            <a href="project">Vezi proiect</a>
+          </div>{" "}
+          <div className="project">
+            <div className="description">
+              <h4>
+                descrierea unui proiectdescrierea unui proiectdescrierea unui
+                proiectdescrierea unui proiectdescrierea unui proiectdescrierea
+                unui proiectdescrierea unui proiectdescrierea unui
+                proiectdescrierea unui proiectdescrierea unui proiectdescrierea
+                unui proiectdescrierea unui proiectdescrierea unui
+                proiectdescrierea unui proiectdescrierea unui proiectdescrierea
+                unui proiectdescrierea unui proiectdescrierea unui
+                proiectdescrierea unui proiect
+              </h4>
+              <span>finalizat / in progres</span>
+            </div>
+            <div className="membri-lider">
+              <div className="membrii">
+                <h4>Membrii:</h4>
+                <ul>
+                  <li>morte99@aol.com</li>
+                  <li>gigolo12@yahoo.com</li>
+                  <li>petrecu_mare_boss01@gmail.com</li>
+                </ul>
+              </div>
+              <hr />
+              <div className="lider">
+                <h4>Lider:</h4>
+                <ul>
+                  <li>ciocanmarian1@yahoo.com</li>
+                </ul>
+              </div>
+            </div>
+            <a href="project">Vezi proiect</a>
+          </div>
+          <div className="project">
+            <div className="description">
+              <h4>
+                descrierea unui proiectdescrierea unui proiectdescrierea unui
+                proiectdescrierea unui proiectdescrierea unui proiectdescrierea
+                unui proiectdescrierea unui proiectdescrierea unui
+                proiectdescrierea unui proiectdescrierea unui proiectdescrierea
+                unui proiectdescrierea unui proiectdescrierea unui
+                proiectdescrierea unui proiectdescrierea unui proiectdescrierea
+                unui proiectdescrierea unui proiectdescrierea unui
+                proiectdescrierea unui proiect
+              </h4>
+              <span>finalizat / in progres</span>
+            </div>
+            <div className="membri-lider">
+              <div className="membrii">
+                <h4>Membrii:</h4>
+                <ul>
+                  <li>morte99@aol.com</li>
+                  <li>gigolo12@yahoo.com</li>
+                  <li>petrecu_mare_boss01@gmail.com</li>
+                </ul>
+              </div>
+              <hr />
+              <div className="lider">
+                <h4>Lider:</h4>
+                <ul>
+                  <li>ciocanmarian1@yahoo.com</li>
+                </ul>
+              </div>
+            </div>
+            <a href="project">Vezi proiect</a>
+          </div>
+          <div className="project">
+            <div className="description">
+              <h4>
+                descrierea unui proiectdescrierea unui proiectdescrierea unui
+                proiectdescrierea unui proiectdescrierea unui proiectdescrierea
+                unui proiectdescrierea unui proiectdescrierea unui
+                proiectdescrierea unui proiectdescrierea unui proiectdescrierea
+                unui proiectdescrierea unui proiectdescrierea unui
+                proiectdescrierea unui proiectdescrierea unui proiectdescrierea
+                unui proiectdescrierea unui proiectdescrierea unui
+                proiectdescrierea unui proiect
+              </h4>
+              <span>finalizat / in progres</span>
+            </div>
+            <div className="membri-lider">
+              <div className="membrii">
+                <h4>Membrii:</h4>
+                <ul>
+                  <li>morte99@aol.com</li>
+                  <li>gigolo12@yahoo.com</li>
+                  <li>petrecu_mare_boss01@gmail.com</li>
+                </ul>
+              </div>
+              <hr />
+              <div className="lider">
+                <h4>Lider:</h4>
+                <ul>
+                  <li>ciocanmarian1@yahoo.com</li>
+                </ul>
+              </div>
+            </div>
+            <a href="project">Vezi proiect</a>
+          </div>
+          <div className="project">
+            <div className="description">
+              <h4>
+                descrierea unui proiectdescrierea unui proiectdescrierea unui
+                proiectdescrierea unui proiectdescrierea unui proiectdescrierea
+                unui proiectdescrierea unui proiectdescrierea unui
+                proiectdescrierea unui proiectdescrierea unui proiectdescrierea
+                unui proiectdescrierea unui proiectdescrierea unui
+                proiectdescrierea unui proiectdescrierea unui proiectdescrierea
+                unui proiectdescrierea unui proiectdescrierea unui
+                proiectdescrierea unui proiect
+              </h4>
+              <span>finalizat / in progres</span>
+            </div>
+            <div className="membri-lider">
+              <div className="membrii">
+                <h4>Membrii:</h4>
+                <ul>
+                  <li>morte99@aol.com</li>
+                  <li>gigolo12@yahoo.com</li>
+                  <li>petrecu_mare_boss01@gmail.com</li>
+                </ul>
+              </div>
+              <hr />
+              <div className="lider">
+                <h4>Lider:</h4>
+                <ul>
+                  <li>ciocanmarian1@yahoo.com</li>
+                </ul>
+              </div>
+            </div>
+            <a href="project">Vezi proiect</a>
+          </div>
+        </div>
+      </div>
+    </Layout_Dash>
+  );
+};
 
 export default dashboard;

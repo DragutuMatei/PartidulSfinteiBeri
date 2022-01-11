@@ -7,7 +7,6 @@ import { createUrqlClient } from "../utils/createUrqlClient";
 import NextLink from "next/link";
 import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
 import { IconButton } from "@chakra-ui/react";
-import { UpdootSection } from "../components/UpdootSection";
 
 function Index() {
   const [variables, setVariables] = useState({
