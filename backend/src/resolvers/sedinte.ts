@@ -10,7 +10,7 @@ class SedintaInput {
     data: string;
 
     @Field()
-    proiectId: number;
+    userId: number;
 }
 
 @Resolver()

@@ -57,9 +57,9 @@ export class UserResolver {
 
   @Query(() => User)
   async getUser(
-    @Arg("id") id: number
-  ): Promise<User | undefined> {
-    return await User.findOne(id);
+    @Arg("email") email: string
+  ): Promise<User> {
+    return await User.findOneOrFail({ email });
   }
 
   @Mutation(() => UserResponse)

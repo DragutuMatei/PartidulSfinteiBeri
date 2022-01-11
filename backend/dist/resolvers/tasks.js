@@ -52,7 +52,7 @@ let TasksResolver = class TasksResolver {
     async addTask(values) {
         return await Tasks_1.Tasks.create(Object.assign({}, values)).save();
     }
-    async addPoints(points, taskId) {
+    async addPoints(taskId, points) {
         const task = await Tasks_1.Tasks.update({ id: taskId }, { points });
         if (task) {
             return true;
@@ -65,10 +65,7 @@ let TasksResolver = class TasksResolver {
             return true;
         return false;
     }
-    async getmyTasks(proiectId, { req }) {
-        return await Tasks_1.Tasks.find({ where: { userId: req.session.userId, proiectId } });
-    }
-    async getTasks(proiectId, { req }) {
+    async getTasks({ req }) {
         const tasks = await Tasks_1.Tasks.find();
         let ts = [];
         console.log(req.session.userId);
@@ -92,8 +89,8 @@ __decorate([
 ], TasksResolver.prototype, "addTask", null);
 __decorate([
     (0, type_graphql_1.Mutation)(() => Boolean),
-    __param(0, (0, type_graphql_1.Arg)("points")),
-    __param(1, (0, type_graphql_1.Arg)("taskId")),
+    __param(0, (0, type_graphql_1.Arg)("taskId")),
+    __param(1, (0, type_graphql_1.Arg)("points")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, Number]),
     __metadata("design:returntype", Promise)
@@ -107,18 +104,9 @@ __decorate([
 ], TasksResolver.prototype, "finish", null);
 __decorate([
     (0, type_graphql_1.Query)(() => [Tasks_1.Tasks]),
-    __param(0, (0, type_graphql_1.Arg)("proiectId")),
-    __param(1, (0, type_graphql_1.Ctx)()),
+    __param(0, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, Object]),
-    __metadata("design:returntype", Promise)
-], TasksResolver.prototype, "getmyTasks", null);
-__decorate([
-    (0, type_graphql_1.Query)(() => [Tasks_1.Tasks]),
-    __param(0, (0, type_graphql_1.Arg)("proiectId")),
-    __param(1, (0, type_graphql_1.Ctx)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, Object]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], TasksResolver.prototype, "getTasks", null);
 TasksResolver = __decorate([

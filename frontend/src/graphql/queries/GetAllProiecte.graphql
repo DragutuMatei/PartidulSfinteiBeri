@@ -1,5 +1,5 @@
-query GetAllProiecte($sefId:Float!) {
-  getAllProiecte(sefId:$sefId){
+query GetAllProiecte{
+  getAllProiecte{
     id
     userId
     numeleProiectului

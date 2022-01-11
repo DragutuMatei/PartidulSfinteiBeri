@@ -6,12 +6,8 @@ import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateCol
 export class User extends BaseEntity {
   @Field()
   @PrimaryGeneratedColumn()
-  id!: number; 
-
-  @Field()
-  @Column({nullable:true})
-  proiecte: string;
-
+  id!: number;
+ 
   @Field()
   @Column({ unique: true })
   username!: string;

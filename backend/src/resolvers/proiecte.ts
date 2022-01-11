@@ -71,8 +71,6 @@ export class ProiecteResolver {
         });
 
         return pr;
-
-        // return await Proiecte.find({ where: { userId:  } });
     }
 
 
@@ -82,8 +80,6 @@ export class ProiecteResolver {
         @Arg("proiectId") proiectId: number,
     ): Promise<boolean> {
         const proiect = await Proiecte.findOne({ id: proiectId });
-
-        console.log(proiect?.userId + idUserAdd.toString() + ", ")
 
         await Proiecte.update({ id: proiectId }, { userId: proiect?.userId + idUserAdd.toString() + ", " })
 

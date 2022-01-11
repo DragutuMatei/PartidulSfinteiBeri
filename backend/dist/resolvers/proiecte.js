@@ -65,7 +65,6 @@ let ProiecteResolver = class ProiecteResolver {
     }
     async addUser(idUserAdd, proiectId) {
         const proiect = await Proiecte_1.Proiecte.findOne({ id: proiectId });
-        console.log((proiect === null || proiect === void 0 ? void 0 : proiect.userId) + idUserAdd.toString() + ", ");
         await Proiecte_1.Proiecte.update({ id: proiectId }, { userId: (proiect === null || proiect === void 0 ? void 0 : proiect.userId) + idUserAdd.toString() + ", " });
         return true;
     }

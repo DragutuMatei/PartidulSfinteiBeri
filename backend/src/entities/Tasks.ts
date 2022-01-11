@@ -32,7 +32,6 @@ export class Tasks extends BaseEntity {
     @Column({ default: false })
     finish: boolean;
 
-
     @Field()
     @Column({ nullable: true })
     deadline: string;

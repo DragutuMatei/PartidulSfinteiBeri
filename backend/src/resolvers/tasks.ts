@@ -39,8 +39,8 @@ export class TasksResolver {
 
     @Mutation(() => Boolean)
     async addPoints(
-        @Arg("points") points: number,
-        @Arg("taskId") taskId: number
+        @Arg("taskId") taskId: number,
+        @Arg("points") points: number
     ): Promise<boolean> {
         const task = await Tasks.update({ id: taskId }, { points });
         if (task) {
@@ -59,17 +59,9 @@ export class TasksResolver {
         return false;
     }
 
-    @Query(() => [Tasks])
-    async getmyTasks(
-        @Arg("proiectId") proiectId: number,
-        @Ctx() { req }: MyContext
-    ): Promise<Tasks[]> {
-        return await Tasks.find({ where: { userId: req.session.userId, proiectId } });
-    }
 
     @Query(() => [Tasks])
     async getTasks(
-        @Arg("proiectId") proiectId: number,
         @Ctx() { req }: MyContext
     ): Promise<Tasks[]> {
         const tasks = await Tasks.find();

@@ -1,4 +1,4 @@
-mutation CreateProiect($values: ProiecteInput!){
+mutation CreacteProiect($values:ProiecteInput!){
   createProiect(values:$values){
     id
     userId

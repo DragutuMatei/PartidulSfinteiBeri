@@ -28,7 +28,7 @@ __decorate([
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
-], SedintaInput.prototype, "proiectId", void 0);
+], SedintaInput.prototype, "userId", void 0);
 SedintaInput = __decorate([
     (0, type_graphql_1.InputType)()
 ], SedintaInput);

@@ -59,8 +59,8 @@ let UserResolver = class UserResolver {
         }
         return false;
     }
-    async getUser(id) {
-        return await User_1.User.findOne(id);
+    async getUser(email) {
+        return await User_1.User.findOneOrFail({ email });
     }
     async changePassword(token, newPassword, { redis, req }) {
         if (newPassword.length < 3) {
@@ -207,9 +207,9 @@ __decorate([
 ], UserResolver.prototype, "checkIfExists", null);
 __decorate([
     (0, type_graphql_1.Query)(() => User_1.User),
-    __param(0, (0, type_graphql_1.Arg)("id")),
+    __param(0, (0, type_graphql_1.Arg)("email")),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "getUser", null);
 __decorate([
