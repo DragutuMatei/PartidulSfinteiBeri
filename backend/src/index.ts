@@ -1,8 +1,8 @@
 import "reflect-metadata";
-import { Updoot } from './entities/Updoot';
+import { ProiecteResolver } from './resolvers/proiecte';
+import { Proiecte } from './entities/Proiecte';
 import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
 import { MyContext } from "src/types";
-import { PostsResolver } from "./resolvers/post";
 import { COOKIE_NAME, __prod__ } from "./constants";
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
@@ -14,19 +14,18 @@ import connectRedis from "connect-redis";
 import cors from "cors";
 import { createConnection } from 'typeorm';
 import { User } from "./entities/User";
-import { Post } from "./entities/Post";
 import path from 'path';
 
 const main = async () => {
   const conn = await createConnection({
     type: "postgres",
-    database: "hackfacebook",
+    database: "tryme",
     password: "Ericsson1!",
     username: "postgres",
     logging: true,
     migrations: [path.join(__dirname, "./migrations/*")],
     synchronize: true,
-    entities: [User, Post, Updoot]
+    entities: [User, Proiecte]
   });
 
   await conn.runMigrations();
@@ -64,7 +63,7 @@ const main = async () => {
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [PostsResolver, UserResolver],
+      resolvers: [UserResolver, ProiecteResolver],
       validate: false,
     }),
     plugins: [

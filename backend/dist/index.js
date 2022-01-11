@@ -4,9 +4,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
-const Updoot_1 = require("./entities/Updoot");
+const proiecte_1 = require("./resolvers/proiecte");
+const Proiecte_1 = require("./entities/Proiecte");
 const apollo_server_core_1 = require("apollo-server-core");
-const post_1 = require("./resolvers/post");
 const constants_1 = require("./constants");
 const express_1 = __importDefault(require("express"));
 const apollo_server_express_1 = require("apollo-server-express");
@@ -18,18 +18,17 @@ const connect_redis_1 = __importDefault(require("connect-redis"));
 const cors_1 = __importDefault(require("cors"));
 const typeorm_1 = require("typeorm");
 const User_1 = require("./entities/User");
-const Post_1 = require("./entities/Post");
 const path_1 = __importDefault(require("path"));
 const main = async () => {
     const conn = await (0, typeorm_1.createConnection)({
         type: "postgres",
-        database: "hackfacebook",
+        database: "tryme",
         password: "Ericsson1!",
         username: "postgres",
         logging: true,
         migrations: [path_1.default.join(__dirname, "./migrations/*")],
         synchronize: true,
-        entities: [User_1.User, Post_1.Post, Updoot_1.Updoot]
+        entities: [User_1.User, Proiecte_1.Proiecte]
     });
     await conn.runMigrations();
     const app = (0, express_1.default)();
@@ -57,7 +56,7 @@ const main = async () => {
     }));
     const apolloServer = new apollo_server_express_1.ApolloServer({
         schema: await (0, type_graphql_1.buildSchema)({
-            resolvers: [post_1.PostsResolver, user_1.UserResolver],
+            resolvers: [user_1.UserResolver, proiecte_1.ProiecteResolver],
             validate: false,
         }),
         plugins: [

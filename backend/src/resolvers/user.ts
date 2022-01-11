@@ -43,6 +43,20 @@ class UserResponse {
 
 @Resolver(User)
 export class UserResolver {
+
+  @Query(() => Boolean)
+  async checkIfExists(
+    @Arg("email") email: string
+  ) {
+    const user = await User.findOne({ email });
+    if (user) {
+      return true;
+    }
+    return false;
+  }
+
+
+
   @Mutation(() => UserResponse)
   async changePassword(
     @Arg('token') token: string,
@@ -152,6 +166,7 @@ export class UserResolver {
         ).returning("*").execute(); console.log(result);
       user = result.raw[0] as any;
     } catch (err) {
+      console.log(err);
       if (err.code === "23505") {
         return {
           errors: [
