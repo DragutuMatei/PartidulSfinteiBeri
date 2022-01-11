@@ -125,6 +125,13 @@ export const createUrqlClient = (ssrExchange: any) => ({
                     // posts: cursorPagination()
                 }
             },
+            /**
+             * git pull origin master
+             * 
+             * git add .
+             * git commit -m "mesaj idk"
+             * git push origin master
+             */
             updates: {
                 Mutation: {
                     create: (_result, args, cache, info) => {

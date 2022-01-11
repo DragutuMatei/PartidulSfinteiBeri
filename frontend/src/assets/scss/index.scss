@@ -1,4 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap");
+$font: 'Open Sans';
+
+$black-coffee: #3a2e39ff;
+$dark-slate-gray: #1e555cff;
+$champagne-pink: #f4d8cdff;
+$middle-yellow-red: #edb183ff;
+$red-salsa: #f15152ff;
+ 
 
 .container {
   display: flex;
@@ -8,10 +16,12 @@
   .text-container {
     margin-right: 20em;
     width: 30%;
+
     h1 {
       margin-top: 30px;
       font-size: 60px;
       line-height: 70px;
+      font-family: $font;
     }
     h3 {
       margin-top: 10px;
@@ -37,6 +47,11 @@
 
 .components {
   display: flex;
+  background-image: url(/images/back.svg);
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding-top: 100px;
+
   .slider {
     margin-top: 5em;
     margin-right: 10em;
@@ -95,17 +110,6 @@
   }
 }
 
-$black-coffee: #3a2e39ff;
-$dark-slate-gray: #1e555cff;
-$champagne-pink: #f4d8cdff;
-$middle-yellow-red: #edb183ff;
-$red-salsa: #f15152ff;
-
-$black-coffee: #3a2e39ff;
-$dark-slate-gray: #1e555cff;
-$champagne-pink: #f4d8cdff;
-$middle-yellow-red: #edb183ff;
-$red-salsa: #f15152ff;
 
 p {
   text-indent: 20px;
@@ -131,6 +135,8 @@ $red-salsa: #f15152ff;
     height: 100vh;
     align-items: center;
     text-align: center;
+
+
     ul {
       display: flex;
       flex-direction: column;
