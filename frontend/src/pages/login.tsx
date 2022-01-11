@@ -19,7 +19,7 @@ const Login: React.FC<{}> = ({}) => {
 
   return (
     <Layout>
-      <Wrapper>
+      <div style={{ top: 100, position: "relative" }}>
         <Formik
           initialValues={{ usernameOrEmail: "", password: "" }}
           onSubmit={async (values, { setErrors }) => {
@@ -28,14 +28,14 @@ const Login: React.FC<{}> = ({}) => {
               setErrors(toErrorMap(resp.data.login.errors));
             } else if (resp.data?.login.user) {
               if (typeof router.query.next === "string") {
-                router.push(router.query.next);                
-                console.log(1)
+                router.push(router.query.next);
+                console.log(1);
               } else {
                 router.back();
               }
             } else {
-                console.log(3)
-                router.push("/");
+              console.log(3);
+              router.push("/");
             }
           }}
         >
@@ -65,7 +65,7 @@ const Login: React.FC<{}> = ({}) => {
             );
           }}
         </Formik>
-      </Wrapper>
+      </div>
     </Layout>
   );
 };
