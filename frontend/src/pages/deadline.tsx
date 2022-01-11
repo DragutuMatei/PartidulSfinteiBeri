@@ -8,57 +8,33 @@ const deadline: React.FC<deadlineProps> = ({}) => {
     <Layout_Dash>
       <div className="tasks-list-deadline">
         <div className="project-displayed">
-          <h3>descrierea proiectului</h3>
+          <h3>descrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectului</h3>
           <div className="taskk">
+              <h5>descrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskului</h5>
             <span>finished/in progress</span>
           </div>
           <button>Deadline pe 25august</button>
         </div>
         <div className="project-displayed">
-          <h3>descrierea proiectului</h3>
+          <h3>descrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectului</h3>
           <div className="taskk">
+              <h5>descrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskului</h5>
             <span>finished/in progress</span>
           </div>
           <button>Deadline pe 25august</button>
         </div>
         <div className="project-displayed">
-          <h3>descrierea proiectului</h3>
+          <h3>descrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectului</h3>
           <div className="taskk">
+              <h5>descrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskului</h5>
             <span>finished/in progress</span>
           </div>
           <button>Deadline pe 25august</button>
         </div>
         <div className="project-displayed">
-          <h3>descrierea proiectului</h3>
+          <h3>descrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectuluidescrierea proiectului</h3>
           <div className="taskk">
-            <span>finished/in progress</span>
-          </div>
-          <button>Deadline pe 25august</button>
-        </div>
-        <div className="project-displayed">
-          <h3>descrierea proiectului</h3>
-          <div className="taskk">
-            <span>finished/in progress</span>
-          </div>
-          <button>Deadline pe 25august</button>
-        </div>
-        <div className="project-displayed">
-          <h3>descrierea proiectului</h3>
-          <div className="taskk">
-            <span>finished/in progress</span>
-          </div>
-          <button>Deadline pe 25august</button>
-        </div>
-        <div className="project-displayed">
-          <h3>descrierea proiectului</h3>
-          <div className="taskk">
-            <span>finished/in progress</span>
-          </div>
-          <button>Deadline pe 25august</button>
-        </div>
-        <div className="project-displayed">
-          <h3>descrierea proiectului</h3>
-          <div className="taskk">
+              <h5>descrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskuluidescrierea taskului</h5>
             <span>finished/in progress</span>
           </div>
           <button>Deadline pe 25august</button>

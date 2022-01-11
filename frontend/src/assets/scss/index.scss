@@ -1,12 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap");
-$font: 'Open Sans';
+$font: "Open Sans";
 
 $black-coffee: #3a2e39ff;
 $dark-slate-gray: #1e555cff;
 $champagne-pink: #f4d8cdff;
 $middle-yellow-red: #edb183ff;
 $red-salsa: #f15152ff;
- 
 
 .container {
   display: flex;
@@ -110,7 +109,6 @@ $red-salsa: #f15152ff;
   }
 }
 
-
 p {
   text-indent: 20px;
 }
@@ -135,7 +133,6 @@ $red-salsa: #f15152ff;
     height: 100vh;
     align-items: center;
     text-align: center;
-
 
     ul {
       display: flex;
@@ -307,7 +304,8 @@ $red-salsa: #f15152ff;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transform: translateX(150%);
+  transform: translateX(140%);
+  width: auto;
   hr {
     width: 75%;
   }
@@ -346,7 +344,7 @@ $red-salsa: #f15152ff;
     padding: 30px;
   }
   h6 {
-    text-align: center;
+    margin-left: 20px;
   }
   #addd {
     margin-bottom: 50px;
@@ -354,21 +352,40 @@ $red-salsa: #f15152ff;
   .email-btn {
     margin-top: 50px;
   }
-  .taskk {
+  .nu_mai_pot_matei {
     display: flex;
     flex-direction: row;
-    text-align: center;
+    align-items: center;
+  }
+  .task-container {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
-    img {
-      height: 50px;
-      width: 50px;
-      border-radius: 90%;
+    width: auto;
+    margin-top: 100px;
+    .taskk {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      margin: 20px;
+      flex: 0 0 33.333333%;
+      img {
+        height: 50px;
+        width: 50px;
+        border-radius: 90%;
+      }
+      h3 {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
     }
-    h3 {
-      padding-left: 10px;
-      padding-right: 10px;
+    .rating {
+      display: flex;
+      flex-direction: row;
+      margin-top: 20px;
     }
   }
 }
@@ -379,12 +396,13 @@ $red-salsa: #f15152ff;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  
+
   .project-displayed {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     margin: 20px;
     flex: 0 0 33.333333%;
     button {
@@ -405,33 +423,73 @@ $red-salsa: #f15152ff;
   }
 }
 
-.meeting-add {
+.meeting-container {
   display: flex;
   flex-direction: column;
-  transform: translateX(280%);
-  textarea {
-    outline: none;
-    height: 100%;
-    padding: 20px;
-    border-radius: 10px;
-    border: 2px $black-coffee solid;
-    resize: none;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(220%);
+  .meeting-add {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    textarea {
+      outline: none;
+      height: 200px;
+      width: 300px;
+      padding: 20px;
+      border-radius: 10px;
+      border: 2px $black-coffee solid;
+      resize: none;
+    }
+    .meeting-content {
+      border: none;
+      outline: none;
+      padding-top: 10px;
+      margin-top: 10px;
+      input {
+        margin-right: 10px;
+        width: 150px;
+        height: 30px;
+      }
+      select {
+        width: 150px;
+        height: 30px;
+      }
+    }
+    button {
+      margin-top: 10px;
+      border: none;
+      border-radius: 50px;
+      height: 30px;
+      background-color: $dark-slate-gray;
+      color: $champagne-pink;
+    }
+    hr {
+      margin-top: 30px;
+    }
   }
-  .meeting-content {
-    border: none;
-    outline: none;
-    padding-top: 10px;
-    margin-top: 10px;
-  }
-  button {
-    margin-top: 10px;
-    border: none;
-    border-radius: 10px;
-    height: 30px;
-    background-color: $dark-slate-gray;
-    color: $champagne-pink;
-  }
-  hr {
-    margin-top: 30px;
+  .meeting-list {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    flex-wrap: wrap;
+    .meeting {
+      display: flex;
+      flex-direction: column;
+      border-left: 10px solid $dark-slate-gray;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      width: auto;
+      .meeting-list-content,
+      h3 {
+        display: flex;
+        flex-direction: row;
+        margin: 20px;
+        h4 {
+          margin-right: 10px;
+        }
+      }
+    }
   }
 }

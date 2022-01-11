@@ -12,10 +12,7 @@ const project: React.FC<projectProps> = ({}) => {
         </div>
 
         <div className="task-descriptionn">
-          <textarea
-            placeholder="Write a description..."
-            id="description"
-          ></textarea>
+          <h4>descrierea unui task</h4>
         </div>
 
         <div className="user-checkk">
@@ -24,7 +21,7 @@ const project: React.FC<projectProps> = ({}) => {
             <button id="checkk">Check user</button>
           </div>
           <h6>User is available.</h6>
-          <button id="addd">Add task</button>
+          <button id="addd">Add project</button>
         </div>
 
         <hr />
@@ -32,16 +29,27 @@ const project: React.FC<projectProps> = ({}) => {
         <div className="email-btn">
           <input type="email" />
           <button id="checkk">Check user</button>
-          <button id="addd-user">Add user</button>
         </div>
+        <div className="nu_mai_pot_matei">
         <h6>User is available.</h6>
-
-        <div className="taskk">
-          <img src="/images/img1.png" alt="task logo" />
-          <h3 className="task-descriptionn">descrierea taskului efectiv</h3>
-          <span>finished/in progress</span>
+        <button id="addd-user">Add user</button>
         </div>
-        <input type="radio" />
+
+        <div className="task-container">
+          <div className="taskk">
+            <img src="/images/img1.png" alt="task logo" />
+            <h3 className="task-descriptionn">marian01@gmail.com</h3>
+            <span>finished/in progress</span>
+          </div>
+          <p>descrierea taskuluidescrierea taskuluidescrierea taskului</p>
+          <div className="rating">
+          <input type="radio" />
+          <input type="radio" />
+          <input type="radio" />
+          <input type="radio" />
+          <input type="radio" />
+          </div>
+        </div>
       </div>
     </Layout_Dash>
   );
