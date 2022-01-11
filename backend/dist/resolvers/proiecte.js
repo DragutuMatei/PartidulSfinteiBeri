@@ -52,7 +52,7 @@ let ProiecteResolver = class ProiecteResolver {
     async getAllProiecte(sefId) {
         return await Proiecte_1.Proiecte.find({ where: { sefId } });
     }
-    async addUser(idUserAdd, proiectId, { req }) {
+    async addUser(idUserAdd, proiectId) {
         const proiect = await Proiecte_1.Proiecte.findOne({ id: proiectId });
         console.log((proiect === null || proiect === void 0 ? void 0 : proiect.userId) + idUserAdd.toString() + ", ");
         await Proiecte_1.Proiecte.update({ id: proiectId }, { userId: (proiect === null || proiect === void 0 ? void 0 : proiect.userId) + idUserAdd.toString() + ", " });
@@ -84,9 +84,8 @@ __decorate([
     (0, type_graphql_1.Mutation)(() => Boolean),
     __param(0, (0, type_graphql_1.Arg)("idUserAdd")),
     __param(1, (0, type_graphql_1.Arg)("proiectId")),
-    __param(2, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, Number, Object]),
+    __metadata("design:paramtypes", [Number, Number]),
     __metadata("design:returntype", Promise)
 ], ProiecteResolver.prototype, "addUser", null);
 ProiecteResolver = __decorate([

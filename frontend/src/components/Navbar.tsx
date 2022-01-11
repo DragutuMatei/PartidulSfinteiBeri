@@ -56,10 +56,36 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
   }
 
   return (
-    <div className="plm">
-      <Box ml={"auto"}>{body}</Box>
+    <div className="navbar_container">
+    <div className="navbar">
+      <ul>
+        <span>INSERT LOGO HERE</span>
+        <NextLink href="/">
+        <li>Home</li>
+        </NextLink>
+        <NextLink href="about">
+        <li>
+          <Link>
+            About
+          </Link>
+        </li>
+        </NextLink>
+        <NextLink href="login">
+        <li>Login</li>
+        </NextLink>
+        <NextLink href="register">
+        <li>Register</li>
+        </NextLink>
+        <NextLink href="dashboard">
+          <li>
+            <Link>
+              Dashboard
+            </Link>
+          </li>
+        </NextLink>
+      </ul>
+    </div>
     </div>
   );
 };
-
 

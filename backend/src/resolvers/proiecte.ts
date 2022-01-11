@@ -1,18 +1,12 @@
-import { getConnection } from 'typeorm';
 import { MyContext } from './../types';
-import { UserInput } from './UserInput';
-import { isAuth } from './../middleware/isAuth';
-import { User } from "../entities/User";
 import {
     Arg,
     Ctx,
     Field,
     InputType,
-    Int,
     Mutation,
     Query,
     Resolver,
-    UseMiddleware,
 } from "type-graphql";
 import { Proiecte } from '../entities/Proiecte';
 
@@ -69,7 +63,6 @@ export class ProiecteResolver {
     async addUser(
         @Arg("idUserAdd") idUserAdd: number,
         @Arg("proiectId") proiectId: number,
-        @Ctx() { req }: MyContext
     ): Promise<boolean> {
         const proiect = await Proiecte.findOne({ id: proiectId });
 
