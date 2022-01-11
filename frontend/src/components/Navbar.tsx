@@ -9,24 +9,18 @@ import { defineLordIconIllustration } from "lord-icon-illustration";
 
 interface NavbarProps {}
 
-export const Navbar: React.FC<NavbarProps> = ({ }) => {
+export const Navbar: React.FC<NavbarProps> = ({}) => {
   const [{ fetching: logoutfetching }, logout] = useLogoutMutation();
   const [{ data, fetching }] = useGetLoggedUserQuery({
-    pause: isServer(),
+  pause: isServer(),
   });
-
-  const logo = useRef() as any;
-
-  useEffect(() => {
-
-  }, []);
 
   return (
     <div className="navbar_container">
       <div className="navbar">
         <ul>
-          <div className="logo"  >
-            <img src="/images/logo.svg" style={{width:50}} alt="" />
+          <div className="logo">
+            <img src="/images/logo.svg" style={{ width: 50 }} alt="" />
           </div>
           <NextLink href="/">
             <li>Home</li>
