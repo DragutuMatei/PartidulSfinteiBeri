@@ -147,7 +147,7 @@ $red-salsa: #f15152ff;
       }
 
       li:not(:first-child):hover {
-        color:#edb183ff;
+        color: #edb183ff;
         background-color: #3a2e39ff;
       }
 
@@ -309,7 +309,15 @@ $red-salsa: #f15152ff;
   align-items: center;
   transform: translateX(150%);
   hr {
-      width: 75%;
+    width: 75%;
+  }
+  textarea {
+    outline: none;
+    height: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px $black-coffee solid;
+    resize: none;
   }
   button {
     border: none;
@@ -344,7 +352,7 @@ $red-salsa: #f15152ff;
     margin-bottom: 50px;
   }
   .email-btn {
-      margin-top: 50px;
+    margin-top: 50px;
   }
   .taskk {
     display: flex;
@@ -365,18 +373,20 @@ $red-salsa: #f15152ff;
   }
 }
 
-
 .tasks-list-deadline {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  transform: translateX(150%);
+  flex-wrap: wrap;
+  
   .project-displayed {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 20px;
+    flex: 0 0 33.333333%;
     button {
       border: none;
       background: red;
@@ -395,3 +405,33 @@ $red-salsa: #f15152ff;
   }
 }
 
+.meeting-add {
+  display: flex;
+  flex-direction: column;
+  transform: translateX(280%);
+  textarea {
+    outline: none;
+    height: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px $black-coffee solid;
+    resize: none;
+  }
+  .meeting-content {
+    border: none;
+    outline: none;
+    padding-top: 10px;
+    margin-top: 10px;
+  }
+  button {
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    height: 30px;
+    background-color: $dark-slate-gray;
+    color: $champagne-pink;
+  }
+  hr {
+    margin-top: 30px;
+  }
+}

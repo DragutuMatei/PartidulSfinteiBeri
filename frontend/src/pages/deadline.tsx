@@ -10,12 +10,58 @@ const deadline: React.FC<deadlineProps> = ({}) => {
         <div className="project-displayed">
           <h3>descrierea proiectului</h3>
           <div className="taskk">
-            <h4>descrierea taskurilor</h4>
             <span>finished/in progress</span>
           </div>
-          <button>
-              Deadline pe 25august
-          </button>
+          <button>Deadline pe 25august</button>
+        </div>
+        <div className="project-displayed">
+          <h3>descrierea proiectului</h3>
+          <div className="taskk">
+            <span>finished/in progress</span>
+          </div>
+          <button>Deadline pe 25august</button>
+        </div>
+        <div className="project-displayed">
+          <h3>descrierea proiectului</h3>
+          <div className="taskk">
+            <span>finished/in progress</span>
+          </div>
+          <button>Deadline pe 25august</button>
+        </div>
+        <div className="project-displayed">
+          <h3>descrierea proiectului</h3>
+          <div className="taskk">
+            <span>finished/in progress</span>
+          </div>
+          <button>Deadline pe 25august</button>
+        </div>
+        <div className="project-displayed">
+          <h3>descrierea proiectului</h3>
+          <div className="taskk">
+            <span>finished/in progress</span>
+          </div>
+          <button>Deadline pe 25august</button>
+        </div>
+        <div className="project-displayed">
+          <h3>descrierea proiectului</h3>
+          <div className="taskk">
+            <span>finished/in progress</span>
+          </div>
+          <button>Deadline pe 25august</button>
+        </div>
+        <div className="project-displayed">
+          <h3>descrierea proiectului</h3>
+          <div className="taskk">
+            <span>finished/in progress</span>
+          </div>
+          <button>Deadline pe 25august</button>
+        </div>
+        <div className="project-displayed">
+          <h3>descrierea proiectului</h3>
+          <div className="taskk">
+            <span>finished/in progress</span>
+          </div>
+          <button>Deadline pe 25august</button>
         </div>
       </div>
     </Layout_Dash>
