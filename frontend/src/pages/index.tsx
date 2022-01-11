@@ -2,7 +2,6 @@ import { Box, Flex, Heading, Link, Stack, Text } from "@chakra-ui/layout";
 import { withUrqlClient } from "next-urql";
 import React, { useEffect, useState } from "react";
 import { Layout } from "../components/Layout";
-import { usePostsQuery } from "../generated/graphql";
 import { createUrqlClient } from "../utils/createUrqlClient";
 import NextLink from "next/link";
 import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
@@ -16,7 +15,6 @@ function Index() {
   });
 
   // const [{ data, fetching }] = usePostsQuery({ variables });
-  const [{ data, fetching }] = usePostsQuery();
 
   return (
     <Layout>
