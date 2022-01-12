@@ -12,6 +12,9 @@ import { toErrorMap } from "../utils/toErrorMap";
 import NextLink from "next/link";
 import { Layout } from "../components/Layout";
 import { route } from "next/dist/server/router";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faKey } from "@fortawesome/free-solid-svg-icons";
 
 const Login: React.FC<{}> = ({}) => {
   const router = useRouter();
@@ -41,20 +44,24 @@ const Login: React.FC<{}> = ({}) => {
         >
           {({ isSubmitting }) => {
             return (
-              <Form>
+              <Form className="login">
+                <div className="user-field">
+                <FontAwesomeIcon icon={faUser} id="user-icon" />
                 <InputField
                   name="usernameOrEmail"
-                  placeholder=""
-                  label="username / email"
+                  placeholder="username / email"
                   class="user-input"
                 />
+                </div>
+                <div className="password-field">
+                <FontAwesomeIcon icon={faKey} id="pass-icon"/>
                 <InputField
                   name="password"
-                  placeholder=""
-                  label="password"
+                  placeholder="password"
                   type="password"
                   class="pass-input"
                 /> 
+                </div>
                 <br />
                 <Button type="submit" isLoading={isSubmitting} id="login">
                   Login

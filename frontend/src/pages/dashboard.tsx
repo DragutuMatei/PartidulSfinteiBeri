@@ -48,8 +48,9 @@ const dashboard: React.FC<dashboardProps> = ({}) => {
               <div className="description">
                 <InputField
                   name="numeleProiectului"
-                  placeholder="numeleProiectului"
+                  placeholder="numele proiectului"
                   textarea={true}
+                  class="numeleProiectului"
                 />
               </div>
               <div className="user">

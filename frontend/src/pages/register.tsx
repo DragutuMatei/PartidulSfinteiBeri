@@ -9,7 +9,11 @@ import { Wrapper } from "../components/Wrapper";
 import { useRegisterMutation } from "../generated/graphql";
 import { createUrqlClient } from "../utils/createUrqlClient";
 import { toErrorMap } from "../utils/toErrorMap";
-
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faKey } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+ 
 interface registerProps {}
 
 const Register: React.FC<registerProps> = ({}) => {
@@ -31,34 +35,22 @@ const Register: React.FC<registerProps> = ({}) => {
         >
           {({ isSubmitting }) => {
             return (
-              <Form>
-<<<<<<< HEAD
-                <InputField
-                  name="username"
-                  placeholder=""
-                  label="username"
-                  class="user-input"
-                />
-                <InputField
-                  name="email"
-                  placeholder=""
-                  label="email"
-                  class="email-input"
-                />
-                <InputField
-                  name="password"
-                  placeholder=""
-                  label="password"
-=======
-                <InputField name="username" placeholder="username" />
-                <InputField name="email" placeholder="email" />
+              <Form className="register">
+                <div className="user-field">
+                <FontAwesomeIcon icon={faUser} id="user-icon" />
+                <InputField name="username" placeholder="username" class="user-input"/>
+                <FontAwesomeIcon icon={faEnvelope} id="user-icon" />
+                <InputField name="email" placeholder="email" class="email-input"/>
+                </div>
+                <div className="pass-field">
+                <FontAwesomeIcon icon={faKey} id="pass-icon" />
                 <InputField
                   name="password"
                   placeholder="password"
->>>>>>> 1fbc968626c01a33c4ac5fc94637c6f10d80cfac
                   type="password"
                   class="pass-input"
                 />
+                </div>
                 <Button type="submit" isLoading={isSubmitting} id="register">
                   Register
                 </Button>
