@@ -25,7 +25,7 @@ function Index() {
     <Layout>
       <div className="components">
         <div className="container">
-          <h1>The key is not to spend time, but to invest it</h1>
+          <h1><cite><q>The key is not to spend time, but to invest it.</q></cite></h1>
           <h3>
           – Stephen R. Covey.
           </h3>
@@ -85,21 +85,15 @@ function Index() {
           </div>
           <div className="right">
             <p>
-            Unlike other apps like it,our web application is not going as in depth to be unique.Instead of adding thing after thing it goes the other way around and is unique in its simplicity.We aim for everyone to be able to easily make a team and start working right away.
-Monitor individual progress and overall progress.An archive with every file you've sent.Anouncments page for everyone in the team.
+            Unlike other apps like it,our web application is not going as in depth to be unique. Instead of adding thing after thing it goes the other way around and is unique in its simplicity. We aim for everyone to be able to easily make a team and start working right away.
+Monitor individual progress and overall progress. An archive with every file you've sent. Anouncments page for everyone in the team.
             </p>
           </div>
         </div>
         <div className="section">
           <div className="left">
             <p>
-            StateDate is a very simple time and resource managment web application.It aims to help people who want a straight forward and simple place to organize a project find a way to materialize their plans.
-            </p>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem
-              facilis laboriosam, ipsa sint soluta non dicta reprehenderit quos
-              voluptates blanditiis. Ab cupiditate, quia voluptates aperiam
-              ipsum placeat animi quas aspernatur!
+            StateDate is a very simple time and resource managment web application. It aims to help people who want a straight forward and simple place to organize a project find a way to materialize their plans.
             </p>
           </div>
           <div className="right">

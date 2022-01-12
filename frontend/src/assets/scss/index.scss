@@ -651,6 +651,37 @@ form {
   flex-direction: column;
 }
 
+.all {
+  .tasks-list-deadline{
+    margin-left: 250px;
+  }
+  .meeting-container{
+    .meeting-add{
+      margin-left: 200px;
+      margin-top: 100px;
+    }
+  }
+  .projects-container{
+    .between {
+      margin-top: 50px;
+    }
+    .add-project{
+      transform: translateX(-30%);
+      button {
+        transform: translateY(50%);
+      }
+      textarea {
+        resize: none;
+      }
+      form {
+        width: 250px;
+      } 
+    }
+  }
+}
+
+
+
 @media (max-width: 700px) {
   .components {
     .container {
