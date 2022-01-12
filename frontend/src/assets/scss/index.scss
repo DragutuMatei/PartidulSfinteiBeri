@@ -9,12 +9,12 @@ $red-salsa: #f15152ff;
 
 html {
   background-image: url(/images/back.svg);
+  background-attachment: fixed;
 }
 
 .components {
   display: flex;
   // background-image: url(/images/back.svg);
-  background-attachment: fixed;
   min-height: 100vh;
   flex-direction: row;
   // flex-wrap: wrap;
@@ -135,13 +135,60 @@ html {
   width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: flex-start;
+  align-items: center;
 
+  .section {
+    width: 90vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    position: relative;
+
+    .left,
+    .right {
+      flex: 1;
+      position: sticky;
+      top: 80px;
+
+      img {
+        max-width: 600px;
+        width: 40vw;
+      }
+
+      p {
+        padding: 10px;
+        font-size: 20px;
+        font-family: $font;
+        font-weight: 500;
+        color: $black-coffee;
+        line-height: 1.5;
+      }
+    }
+  }
 }
 
 p {
   text-indent: 20px;
+}
+
+.aboutTxt {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    text-align: center;
+    width: auto;
+    font-size: 21px;
+    color: $black-coffee;
+    font-family: $font;
+    padding: 10px;
+  }
 }
 
 .all {
@@ -216,6 +263,9 @@ p {
   }
 
   .projects-container {
+    padding-left: 230px;
+    width: 100vw;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -285,11 +335,13 @@ p {
     align-items: center;
     margin-top: 20px;
     margin-bottom: 20px;
+
     .project {
       display: flex;
       flex-direction: column;
       border-left: 10px solid $dark-slate-gray;
-      max-width: 50%;
+      min-width: 350px;
+      max-width: 500px;
       margin: 20px 10px;
       border-radius: 0 30px 30px 0;
       background: #ffffffcc;
@@ -301,7 +353,7 @@ p {
         color: #999191;
         margin-left: 13px;
       }
-      h4 {
+      p {
         padding: 10px;
       }
       span {
@@ -356,6 +408,7 @@ p {
   input {
     border: none;
     padding: 8px 15px;
+    border-radius: 6px;
     margin: 10px;
     border-bottom: 1px solid $black-coffee;
   }

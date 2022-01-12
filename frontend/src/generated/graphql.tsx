@@ -1,7 +1,6 @@
 import gql from 'graphql-tag';
 import * as Urql from 'urql';
 export type Maybe<T> = T | null;
-export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
@@ -123,7 +122,8 @@ export type Query = {
   getLoggedUser?: Maybe<User>;
   getSedinte: Array<Sedinte>;
   getTasks: Array<Tasks>;
-  getUser: User;
+  getUserByEmail: User;
+  getUserById: User;
 };
 
 
@@ -137,8 +137,13 @@ export type QueryGetSedinteArgs = {
 };
 
 
-export type QueryGetUserArgs = {
+export type QueryGetUserByEmailArgs = {
   email: Scalars['String'];
+};
+
+
+export type QueryGetUserByIdArgs = {
+  id: Scalars['Float'];
 };
 
 export type SedintaInput = {
@@ -157,8 +162,8 @@ export type Sedinte = {
 
 export type TaskInput = {
   deadline: Scalars['String'];
-  finish?: InputMaybe<Scalars['Boolean']>;
-  points?: InputMaybe<Scalars['Float']>;
+  finish?: Maybe<Scalars['Boolean']>;
+  points?: Maybe<Scalars['Float']>;
   proiectId: Scalars['Float'];
   sefId: Scalars['Float'];
   task: Scalars['String'];
@@ -278,12 +283,19 @@ export type GetSedinteQueryVariables = Exact<{
 
 export type GetSedinteQuery = { __typename?: 'Query', getSedinte: Array<{ __typename?: 'Sedinte', id: number, topic: string, data: string, proiectId: number }> };
 
-export type GetUserQueryVariables = Exact<{
+export type GetUserByEmailQueryVariables = Exact<{
   email: Scalars['String'];
 }>;
 
 
-export type GetUserQuery = { __typename?: 'Query', getUser: { __typename?: 'User', id: number, username: string, email: string } };
+export type GetUserByEmailQuery = { __typename?: 'Query', getUserByEmail: { __typename?: 'User', id: number, username: string, email: string } };
+
+export type GetUserByIdQueryVariables = Exact<{
+  id: Scalars['Float'];
+}>;
+
+
+export type GetUserByIdQuery = { __typename?: 'Query', getUserById: { __typename?: 'User', id: number, username: string, email: string } };
 
 export type GetLoggedUserQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -443,9 +455,9 @@ export const GetSedinteDocument = gql`
 export function useGetSedinteQuery(options: Omit<Urql.UseQueryArgs<GetSedinteQueryVariables>, 'query'> = {}) {
   return Urql.useQuery<GetSedinteQuery>({ query: GetSedinteDocument, ...options });
 };
-export const GetUserDocument = gql`
-    query GetUser($email: String!) {
-  getUser(email: $email) {
+export const GetUserByEmailDocument = gql`
+    query GetUserByEmail($email: String!) {
+  getUserByEmail(email: $email) {
     id
     username
     email
@@ -453,8 +465,21 @@ export const GetUserDocument = gql`
 }
     `;
 
-export function useGetUserQuery(options: Omit<Urql.UseQueryArgs<GetUserQueryVariables>, 'query'> = {}) {
-  return Urql.useQuery<GetUserQuery>({ query: GetUserDocument, ...options });
+export function useGetUserByEmailQuery(options: Omit<Urql.UseQueryArgs<GetUserByEmailQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GetUserByEmailQuery>({ query: GetUserByEmailDocument, ...options });
+};
+export const GetUserByIdDocument = gql`
+    query GetUserById($id: Float!) {
+  getUserById(id: $id) {
+    id
+    username
+    email
+  }
+}
+    `;
+
+export function useGetUserByIdQuery(options: Omit<Urql.UseQueryArgs<GetUserByIdQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GetUserByIdQuery>({ query: GetUserByIdDocument, ...options });
 };
 export const GetLoggedUserDocument = gql`
     query getLoggedUser {

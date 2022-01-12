@@ -32,20 +32,11 @@ const Register: React.FC<registerProps> = ({}) => {
           {({ isSubmitting }) => {
             return (
               <Form>
-                <InputField
-                  name="username"
-                  placeholder="username"
-                  label="username"
-                />
-                <InputField
-                  name="email"
-                  placeholder="email"
-                  label="email"
-                />
+                <InputField name="username" placeholder="username" />
+                <InputField name="email" placeholder="email" />
                 <InputField
                   name="password"
                   placeholder="password"
-                  label="password"
                   type="password"
                 />
                 <Button type="submit" isLoading={isSubmitting}>

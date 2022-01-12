@@ -23,13 +23,14 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
   const scrl = () => {
     const navbar = document.querySelector(".navbar") as HTMLAnchorElement;
 
-    if (navbar.getBoundingClientRect().top == 0 ) {
-      navbar.style.width = "100vw";
-      navbar.style.borderRadius = "0px";
-    } else if (navbar.getBoundingClientRect().top != 0) {
-      navbar.style.width = "65%";
-      navbar.style.borderRadius = "30px";
-    }
+    if (navbar)
+      if (navbar.getBoundingClientRect().top == 0) {
+        navbar.style.width = "100vw";
+        navbar.style.borderRadius = "0px";
+      } else if (navbar.getBoundingClientRect().top != 0) {
+        navbar.style.width = "65%";
+        navbar.style.borderRadius = "30px";
+      }
   };
 
   return (

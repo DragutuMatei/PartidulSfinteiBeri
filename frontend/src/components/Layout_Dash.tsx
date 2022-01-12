@@ -6,7 +6,7 @@ export const Layout_Dash: React.FC<Layout_DashProps> = ({ children }) => {
   return (
     <div className="all">
       <Navbar_Dash />
-      <>{children}</>
+      {children}
     </div>
   );
 };
