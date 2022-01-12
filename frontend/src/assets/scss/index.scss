@@ -522,7 +522,7 @@ p {
 
 .register {
   margin-top: 100px;
-  margin-left: 230px;
+  margin-left: 270px;
 }
 
 form {
@@ -601,6 +601,7 @@ form {
     background: #fff;
     font-size: 14px;
     margin-top: 30px;
+    margin-bottom: 30px;
     padding: 16px 20px;
     border-radius: 26px;
     border: 1px solid #d4d3e8;
@@ -625,6 +626,7 @@ form {
     background: #fff;
     font-size: 14px;
     margin-top: 30px;
+    margin-bottom: 30px;
     padding: 16px 20px;
     border-radius: 26px;
     border: 1px solid #d4d3e8;
@@ -701,6 +703,15 @@ form {
   .all2 {
     form {
       margin-left: 40px;
+    }
+  }
+}
+
+.all2 {
+  .aboutTxt{
+    p {
+      font-weight: bold;
+      padding-top: 50px;
     }
   }
 }
