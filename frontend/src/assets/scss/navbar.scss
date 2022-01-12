@@ -1,45 +1,55 @@
 .navbar {
-    display:flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65%;
+  min-width: 400px;
+  height: 80px;
+  background-color: white;
+  border-style: none;
+  position: sticky;
+  border-radius: 30px;
+  z-index: 9999;
+  align-self: center;
+  justify-self: center;
+  margin: auto;
+  top: 0px;
+  margin-top: 30px;
+  transition: 0.3s ease-in ;
+
+  //animation: navbarAnimation 1s ease forwards;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    margin-top: 30px;
-    width: 65%;
-    height: 80px;
-    background-color: white;
-    border-style: none;
-    position: sticky;
-    border-radius: 30px;
-    //animation: navbarAnimation 1s ease forwards;
-    ul {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        li {
-            list-style: none;
-            margin: 10px;
-            margin-left: 40px;
-            transition: 0.3s;
-            cursor: pointer;
-            &:hover {
-                color: orange;
-            }
-        }
+    justify-content: center;
+    li {
+      list-style: none;
+      margin: 10px;
+      margin-left: 40px;
+      transition: 0.3s;
+      cursor: pointer;
+      &:hover {
+        color: orange;
+      }
     }
+  }
 }
 
 .navbar_container {
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    width: 100vw;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  z-index: 999;
+  width: 100vw;
+  margin-top: 30px;
 }
 
-
 @keyframes navbarAnimation {
-    100% {
-        width: 100%;
-        margin-top:0px;
-        border-radius: 0px;
-    }
+  100% {
+    width: 100%;
+    margin-top: 0px;
+    border-radius: 0px;
+  }
 }

@@ -59,8 +59,11 @@ let UserResolver = class UserResolver {
         }
         return false;
     }
-    async getUser(email) {
+    async getUserByEmail(email) {
         return await User_1.User.findOneOrFail({ email });
+    }
+    async getUserById(id) {
+        return await User_1.User.findOneOrFail(id);
     }
     async changePassword(token, newPassword, { redis, req }) {
         if (newPassword.length < 3) {
@@ -211,7 +214,14 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
-], UserResolver.prototype, "getUser", null);
+], UserResolver.prototype, "getUserByEmail", null);
+__decorate([
+    (0, type_graphql_1.Query)(() => User_1.User),
+    __param(0, (0, type_graphql_1.Arg)("id")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], UserResolver.prototype, "getUserById", null);
 __decorate([
     (0, type_graphql_1.Mutation)(() => UserResponse),
     __param(0, (0, type_graphql_1.Arg)('token')),

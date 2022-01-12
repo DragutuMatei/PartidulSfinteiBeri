@@ -32,6 +32,7 @@ const Register: React.FC<registerProps> = ({}) => {
           {({ isSubmitting }) => {
             return (
               <Form>
+<<<<<<< HEAD
                 <InputField
                   name="username"
                   placeholder=""
@@ -48,6 +49,13 @@ const Register: React.FC<registerProps> = ({}) => {
                   name="password"
                   placeholder=""
                   label="password"
+=======
+                <InputField name="username" placeholder="username" />
+                <InputField name="email" placeholder="email" />
+                <InputField
+                  name="password"
+                  placeholder="password"
+>>>>>>> 1fbc968626c01a33c4ac5fc94637c6f10d80cfac
                   type="password"
                   class="pass-input"
                 />

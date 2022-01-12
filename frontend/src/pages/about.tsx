@@ -1,11 +1,12 @@
-import React from 'react'
-import { Layout } from '../components/Layout';
+import { withUrqlClient } from "next-urql";
+import React from "react";
+import { Layout } from "../components/Layout";
+import { createUrqlClient } from "../utils/createUrqlClient";
 
-interface aboutProps {
-
-}
+interface aboutProps {}
 
 const about: React.FC<aboutProps> = ({}) => {
+<<<<<<< HEAD
     return (
         <Layout>
             <div>
@@ -14,5 +15,48 @@ const about: React.FC<aboutProps> = ({}) => {
         </Layout>
         );
 }
+=======
+  return (
+    <Layout>
+      <div className="aboutTxt">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
+          provident sed aliquam. Repellat non, est quasi nostrum molestias
+          obcaecati et praesentium quas, consequuntur, nam asperiores deleniti
+          tempora? Similique, esse ducimus!
+        </p>
+        <p>
+          provident sed aliquam. Repellat non, est quasi nostrum molestias
+          obcaecati et praesentium quas, consequuntur, nam asperiores deleniti
+          tempora? Similique, esse ducimus!
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
+          provident sed aliquam. Repellat non, est quasi nostrum molestias
+          obcaecati et praesentium quas, consequuntur, nam asperiores deleniti
+          tempora? Similique, esse ducimus!
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
+          obcaecati et praesentium quas, consequuntur, nam asperiores deleniti
+          tempora? Similique, esse ducimus!
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
+          provident sed aliquam. Repellat non, est quasi nostrum molestias
+          obcaecati et praesentium quas, consequuntur, nam asperiores deleniti
+          tempora? Similique, esse ducimus!
+        </p>
+      </div>
+    </Layout>
+  );
+};
+>>>>>>> 1fbc968626c01a33c4ac5fc94637c6f10d80cfac
 
-export default about;
+export default withUrqlClient(createUrqlClient)(about);

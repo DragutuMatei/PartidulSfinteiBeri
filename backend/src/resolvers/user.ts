@@ -56,10 +56,18 @@ export class UserResolver {
   }
 
   @Query(() => User)
-  async getUser(
+  async getUserByEmail(
     @Arg("email") email: string
   ): Promise<User> {
     return await User.findOneOrFail({ email });
+  }
+
+
+  @Query(() => User)
+  async getUserById(
+    @Arg("id") id: number
+  ): Promise<User> {
+    return await User.findOneOrFail(id);
   }
 
   @Mutation(() => UserResponse)
