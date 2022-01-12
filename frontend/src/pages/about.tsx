@@ -9,9 +9,7 @@ const about: React.FC<aboutProps> = ({}) => {
     return (
         <Layout>
             <div>
-                <h1>
-                    JIHAD TIME
-                </h1>
+                <h1>sall matei</h1>
             </div>
         </Layout>
         );

@@ -44,18 +44,19 @@ const Login: React.FC<{}> = ({}) => {
               <Form>
                 <InputField
                   name="usernameOrEmail"
-                  placeholder="usernameOrEmail"
-                  label="usernameOrEmail"
-                  class="asd"
+                  placeholder=""
+                  label="username / email"
+                  class="user-input"
                 />
                 <InputField
                   name="password"
-                  placeholder="password"
+                  placeholder=""
                   label="password"
                   type="password"
+                  class="pass-input"
                 /> 
                 <br />
-                <Button type="submit" isLoading={isSubmitting}>
+                <Button type="submit" isLoading={isSubmitting} id="login">
                   Login
                 </Button>
               </Form>

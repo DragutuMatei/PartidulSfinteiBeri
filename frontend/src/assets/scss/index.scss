@@ -493,3 +493,56 @@ $red-salsa: #f15152ff;
     }
   }
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 150px;
+  .user-input {
+    border: none;
+    outline: none;
+    border-bottom: 2px solid black;
+    padding: 10px;
+  }
+  .email-input {
+    border: none;
+    outline: none;
+    border-bottom: 2px solid black;
+    padding: 10px;
+  }
+  .pass-input {
+    border: none;
+    outline: none;
+    border-bottom: 2px solid black;
+    padding: 10px;
+  }
+  label {
+    margin-top: 10px;
+  }
+  #login {
+    border: none;
+    cursor: pointer;
+    background-color: $dark-slate-gray;
+    color: $champagne-pink;
+    border-radius: 50px;
+    width: 160px;
+    height: 30px;
+  }
+  #register {
+    border: none;
+    cursor: pointer;
+    background-color: $dark-slate-gray;
+    color: $champagne-pink;
+    border-radius: 50px;
+    width: 160px;
+    height: 30px;
+    margin-top: 20px;
+  }
+}
+
+.all2 {
+  display: flex;
+  flex-direction: column;
+}
