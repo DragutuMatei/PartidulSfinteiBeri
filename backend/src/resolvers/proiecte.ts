@@ -35,7 +35,7 @@ export class ProiecteResolver {
         return await Proiecte.create({
             sefId: values.sefId,
             numeleProiectului: values.numeleProiectului,
-            userId: values.userId + ", "
+            userId: values.userId
         }).save();
     }
 
@@ -71,6 +71,13 @@ export class ProiecteResolver {
         });
 
         return pr;
+    }
+
+    @Query(() => Proiecte)
+    async getAProiectById(
+        @Arg("id") id: number
+    ): Promise<Proiecte> {
+        return await Proiecte.findOneOrFail({ id });
     }
 
 

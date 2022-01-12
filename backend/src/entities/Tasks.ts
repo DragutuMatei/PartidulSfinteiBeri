@@ -24,7 +24,7 @@ export class Tasks extends BaseEntity {
     @Column()
     proiectId: number;
 
-    @Field()
+    @Field({ nullable: true })
     @Column({ nullable: true })
     points?: number;
 

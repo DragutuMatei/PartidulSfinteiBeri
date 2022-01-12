@@ -51,6 +51,23 @@ __decorate([
 UserResponse = __decorate([
     (0, type_graphql_1.ObjectType)()
 ], UserResponse);
+let UserR = class UserR {
+};
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", Number)
+], UserR.prototype, "id", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", String)
+], UserR.prototype, "username", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", String)
+], UserR.prototype, "email", void 0);
+UserR = __decorate([
+    (0, type_graphql_1.ObjectType)()
+], UserR);
 let UserResolver = class UserResolver {
     async checkIfExists(email) {
         const user = await User_1.User.findOne({ email });
@@ -60,10 +77,20 @@ let UserResolver = class UserResolver {
         return false;
     }
     async getUserByEmail(email) {
-        return await User_1.User.findOneOrFail({ email });
+        console.log(email);
+        const user = await User_1.User.findOne({ email: email });
+        console.log(user);
+        return user;
     }
     async getUserById(id) {
-        return await User_1.User.findOneOrFail(id);
+        const user = await User_1.User.findOneOrFail(id);
+        console.log(user);
+        return user;
+    }
+    async getUserByIdQ(id) {
+        const user = await User_1.User.findOneOrFail(id);
+        console.log(user);
+        return user;
     }
     async changePassword(token, newPassword, { redis, req }) {
         if (newPassword.length < 3) {
@@ -183,6 +210,17 @@ let UserResolver = class UserResolver {
         console.log(req.session);
         return { user: user };
     }
+    async getSomeUsers(ids) {
+        let arr = [];
+        let arra = ids.split(",").filter((o) => o != " ");
+        console.log(arra);
+        for (let i = 0; i < arra.length; i++) {
+            console.log(arra[i]);
+            const user = await User_1.User.findOneOrFail({ id: parseInt(arra[i]) });
+            arr.push(user);
+        }
+        return arr;
+    }
     getLoggedUser({ req }) {
         if (!req.session.userId) {
             return null;
@@ -209,19 +247,26 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "checkIfExists", null);
 __decorate([
-    (0, type_graphql_1.Query)(() => User_1.User),
+    (0, type_graphql_1.Mutation)(() => UserR),
     __param(0, (0, type_graphql_1.Arg)("email")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "getUserByEmail", null);
 __decorate([
-    (0, type_graphql_1.Query)(() => User_1.User),
+    (0, type_graphql_1.Mutation)(() => UserR),
     __param(0, (0, type_graphql_1.Arg)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "getUserById", null);
+__decorate([
+    (0, type_graphql_1.Query)(() => UserR),
+    __param(0, (0, type_graphql_1.Arg)("id")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], UserResolver.prototype, "getUserByIdQ", null);
 __decorate([
     (0, type_graphql_1.Mutation)(() => UserResponse),
     __param(0, (0, type_graphql_1.Arg)('token')),
@@ -256,6 +301,13 @@ __decorate([
     __metadata("design:paramtypes", [String, String, Object]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "login", null);
+__decorate([
+    (0, type_graphql_1.Query)(() => [User_1.User]),
+    __param(0, (0, type_graphql_1.Arg)("ids")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], UserResolver.prototype, "getSomeUsers", null);
 __decorate([
     (0, type_graphql_1.Query)(() => User_1.User, { nullable: true }),
     __param(0, (0, type_graphql_1.Ctx)()),

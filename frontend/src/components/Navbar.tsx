@@ -50,7 +50,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
         </NextLink>
         {data?.getLoggedUser ? (
           <>
-            <NextLink href="dashboard">
+            <NextLink href="/dashboard">
               <li>
                 <Link>Dashboard</Link>
               </li>

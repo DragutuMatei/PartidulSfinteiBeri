@@ -19,5 +19,4 @@ export class Proiecte extends BaseEntity {
     @Field()
     @Column()
     sefId: number;
- 
 }

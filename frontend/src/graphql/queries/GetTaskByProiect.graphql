@@ -1,0 +1,12 @@
+query GetTaskByProiect($proiectId: Float!) {
+  getTaskByProiect(proiectId: $proiectId) {
+    id
+    task
+    userId
+    sefId
+    proiectId
+    points
+    finish
+    deadline
+  }
+}

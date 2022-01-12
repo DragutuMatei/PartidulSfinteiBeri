@@ -32,6 +32,8 @@ export type Mutation = {
   deleteSedinta: Scalars['Boolean'];
   finish: Scalars['Boolean'];
   forgotPassword: Scalars['Boolean'];
+  getUserByEmail: UserR;
+  getUserById: UserR;
   login: UserResponse;
   logout: Scalars['Boolean'];
   register: UserResponse;
@@ -91,6 +93,16 @@ export type MutationForgotPasswordArgs = {
 };
 
 
+export type MutationGetUserByEmailArgs = {
+  email: Scalars['String'];
+};
+
+
+export type MutationGetUserByIdArgs = {
+  id: Scalars['Float'];
+};
+
+
 export type MutationLoginArgs = {
   password: Scalars['String'];
   usernameOrEmail: Scalars['String'];
@@ -118,12 +130,14 @@ export type ProiecteInput = {
 export type Query = {
   __typename?: 'Query';
   checkIfExists: Scalars['Boolean'];
+  getAProiectById: Proiecte;
   getAllProiecte: Array<Proiecte>;
   getLoggedUser?: Maybe<User>;
   getSedinte: Array<Sedinte>;
+  getSomeUsers: Array<User>;
+  getTaskByProiect: Array<Tasks>;
   getTasks: Array<Tasks>;
-  getUserByEmail: User;
-  getUserById: User;
+  getUserByIdQ: UserR;
 };
 
 
@@ -132,17 +146,27 @@ export type QueryCheckIfExistsArgs = {
 };
 
 
+export type QueryGetAProiectByIdArgs = {
+  id: Scalars['Float'];
+};
+
+
 export type QueryGetSedinteArgs = {
   proiectId: Scalars['Float'];
 };
 
 
-export type QueryGetUserByEmailArgs = {
-  email: Scalars['String'];
+export type QueryGetSomeUsersArgs = {
+  ids: Scalars['String'];
 };
 
 
-export type QueryGetUserByIdArgs = {
+export type QueryGetTaskByProiectArgs = {
+  proiectId: Scalars['Float'];
+};
+
+
+export type QueryGetUserByIdQArgs = {
   id: Scalars['Float'];
 };
 
@@ -175,7 +199,7 @@ export type Tasks = {
   deadline: Scalars['String'];
   finish?: Maybe<Scalars['Boolean']>;
   id: Scalars['Float'];
-  points: Scalars['Float'];
+  points?: Maybe<Scalars['Float']>;
   proiectId: Scalars['Float'];
   sefId: Scalars['Float'];
   task: Scalars['String'];
@@ -192,6 +216,13 @@ export type User = {
 export type UserInput = {
   email: Scalars['String'];
   password: Scalars['String'];
+  username: Scalars['String'];
+};
+
+export type UserR = {
+  __typename?: 'UserR';
+  email: Scalars['String'];
+  id: Scalars['Float'];
   username: Scalars['String'];
 };
 
@@ -251,6 +282,20 @@ export type DeleteProiectMutationVariables = Exact<{
 
 export type DeleteProiectMutation = { __typename?: 'Mutation', deleteProiect: boolean };
 
+export type ReturnUserEmailMutationVariables = Exact<{
+  email: Scalars['String'];
+}>;
+
+
+export type ReturnUserEmailMutation = { __typename?: 'Mutation', getUserByEmail: { __typename?: 'UserR', id: number, username: string, email: string } };
+
+export type ReturnUserByIdMutationVariables = Exact<{
+  id: Scalars['Float'];
+}>;
+
+
+export type ReturnUserByIdMutation = { __typename?: 'Mutation', getUserById: { __typename?: 'UserR', id: number, username: string, email: string } };
+
 export type LoginMutationVariables = Exact<{
   usernameOrEmail: Scalars['String'];
   password: Scalars['String'];
@@ -271,6 +316,13 @@ export type RegisterMutationVariables = Exact<{
 
 export type RegisterMutation = { __typename?: 'Mutation', register: { __typename?: 'UserResponse', errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null | undefined, user?: { __typename?: 'User', id: number, username: string, email: string } | null | undefined } };
 
+export type GetAProiectByIdQueryVariables = Exact<{
+  id: Scalars['Float'];
+}>;
+
+
+export type GetAProiectByIdQuery = { __typename?: 'Query', getAProiectById: { __typename?: 'Proiecte', id: number, userId: string, numeleProiectului: string, sefId: number } };
+
 export type GetAllProiecteQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -283,19 +335,26 @@ export type GetSedinteQueryVariables = Exact<{
 
 export type GetSedinteQuery = { __typename?: 'Query', getSedinte: Array<{ __typename?: 'Sedinte', id: number, topic: string, data: string, proiectId: number }> };
 
-export type GetUserByEmailQueryVariables = Exact<{
-  email: Scalars['String'];
+export type GetSomeUsersQueryVariables = Exact<{
+  ids: Scalars['String'];
 }>;
 
 
-export type GetUserByEmailQuery = { __typename?: 'Query', getUserByEmail: { __typename?: 'User', id: number, username: string, email: string } };
+export type GetSomeUsersQuery = { __typename?: 'Query', getSomeUsers: Array<{ __typename?: 'User', id: number, username: string, email: string }> };
+
+export type GetTaskByProiectQueryVariables = Exact<{
+  proiectId: Scalars['Float'];
+}>;
+
+
+export type GetTaskByProiectQuery = { __typename?: 'Query', getTaskByProiect: Array<{ __typename?: 'Tasks', id: number, task: string, userId: number, sefId: number, proiectId: number, points?: number | null | undefined, finish?: boolean | null | undefined, deadline: string }> };
 
 export type GetUserByIdQueryVariables = Exact<{
   id: Scalars['Float'];
 }>;
 
 
-export type GetUserByIdQuery = { __typename?: 'Query', getUserById: { __typename?: 'User', id: number, username: string, email: string } };
+export type GetUserByIdQuery = { __typename?: 'Query', getUserByIdQ: { __typename?: 'UserR', id: number, username: string, email: string } };
 
 export type GetLoggedUserQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -396,6 +455,32 @@ export const DeleteProiectDocument = gql`
 export function useDeleteProiectMutation() {
   return Urql.useMutation<DeleteProiectMutation, DeleteProiectMutationVariables>(DeleteProiectDocument);
 };
+export const ReturnUserEmailDocument = gql`
+    mutation ReturnUserEmail($email: String!) {
+  getUserByEmail(email: $email) {
+    id
+    username
+    email
+  }
+}
+    `;
+
+export function useReturnUserEmailMutation() {
+  return Urql.useMutation<ReturnUserEmailMutation, ReturnUserEmailMutationVariables>(ReturnUserEmailDocument);
+};
+export const ReturnUserByIdDocument = gql`
+    mutation ReturnUserById($id: Float!) {
+  getUserById(id: $id) {
+    id
+    username
+    email
+  }
+}
+    `;
+
+export function useReturnUserByIdMutation() {
+  return Urql.useMutation<ReturnUserByIdMutation, ReturnUserByIdMutationVariables>(ReturnUserByIdDocument);
+};
 export const LoginDocument = gql`
     mutation Login($usernameOrEmail: String!, $password: String!) {
   login(usernameOrEmail: $usernameOrEmail, password: $password) {
@@ -427,6 +512,20 @@ export const RegisterDocument = gql`
 export function useRegisterMutation() {
   return Urql.useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument);
 };
+export const GetAProiectByIdDocument = gql`
+    query GetAProiectById($id: Float!) {
+  getAProiectById(id: $id) {
+    id
+    userId
+    numeleProiectului
+    sefId
+  }
+}
+    `;
+
+export function useGetAProiectByIdQuery(options: Omit<Urql.UseQueryArgs<GetAProiectByIdQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GetAProiectByIdQuery>({ query: GetAProiectByIdDocument, ...options });
+};
 export const GetAllProiecteDocument = gql`
     query GetAllProiecte {
   getAllProiecte {
@@ -455,9 +554,9 @@ export const GetSedinteDocument = gql`
 export function useGetSedinteQuery(options: Omit<Urql.UseQueryArgs<GetSedinteQueryVariables>, 'query'> = {}) {
   return Urql.useQuery<GetSedinteQuery>({ query: GetSedinteDocument, ...options });
 };
-export const GetUserByEmailDocument = gql`
-    query GetUserByEmail($email: String!) {
-  getUserByEmail(email: $email) {
+export const GetSomeUsersDocument = gql`
+    query GetSomeUsers($ids: String!) {
+  getSomeUsers(ids: $ids) {
     id
     username
     email
@@ -465,12 +564,30 @@ export const GetUserByEmailDocument = gql`
 }
     `;
 
-export function useGetUserByEmailQuery(options: Omit<Urql.UseQueryArgs<GetUserByEmailQueryVariables>, 'query'> = {}) {
-  return Urql.useQuery<GetUserByEmailQuery>({ query: GetUserByEmailDocument, ...options });
+export function useGetSomeUsersQuery(options: Omit<Urql.UseQueryArgs<GetSomeUsersQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GetSomeUsersQuery>({ query: GetSomeUsersDocument, ...options });
+};
+export const GetTaskByProiectDocument = gql`
+    query GetTaskByProiect($proiectId: Float!) {
+  getTaskByProiect(proiectId: $proiectId) {
+    id
+    task
+    userId
+    sefId
+    proiectId
+    points
+    finish
+    deadline
+  }
+}
+    `;
+
+export function useGetTaskByProiectQuery(options: Omit<Urql.UseQueryArgs<GetTaskByProiectQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GetTaskByProiectQuery>({ query: GetTaskByProiectDocument, ...options });
 };
 export const GetUserByIdDocument = gql`
     query GetUserById($id: Float!) {
-  getUserById(id: $id) {
+  getUserByIdQ(id: $id) {
     id
     username
     email

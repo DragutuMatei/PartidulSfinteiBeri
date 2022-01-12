@@ -79,8 +79,16 @@ export class TasksResolver {
         });
 
         return ts;
-
+    
         // return await Tasks.find({ where: { proiectId } });
+    }
+    
+
+    @Query(() => [Tasks])
+    async getTaskByProiect(
+        @Arg("proiectId") proiectId: number
+    ): Promise<Tasks[]> {
+        return await Tasks.find({ where: { proiectId: proiectId } });
     }
 
 }

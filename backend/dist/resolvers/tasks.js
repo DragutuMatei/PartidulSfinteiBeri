@@ -79,6 +79,9 @@ let TasksResolver = class TasksResolver {
         });
         return ts;
     }
+    async getTaskByProiect(proiectId) {
+        return await Tasks_1.Tasks.find({ where: { proiectId: proiectId } });
+    }
 };
 __decorate([
     (0, type_graphql_1.Mutation)(() => Tasks_1.Tasks),
@@ -109,6 +112,13 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], TasksResolver.prototype, "getTasks", null);
+__decorate([
+    (0, type_graphql_1.Query)(() => [Tasks_1.Tasks]),
+    __param(0, (0, type_graphql_1.Arg)("proiectId")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], TasksResolver.prototype, "getTaskByProiect", null);
 TasksResolver = __decorate([
     (0, type_graphql_1.Resolver)()
 ], TasksResolver);

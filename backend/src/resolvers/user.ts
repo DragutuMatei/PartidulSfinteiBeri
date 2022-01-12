@@ -41,6 +41,19 @@ class UserResponse {
   user?: User;
 }
 
+@ObjectType()
+class UserR {
+  @Field()
+  id: number;
+
+  @Field()
+  username: string;
+
+  @Field()
+  email: string
+
+}
+
 @Resolver(User)
 export class UserResolver {
 
@@ -55,19 +68,32 @@ export class UserResolver {
     return false;
   }
 
-  @Query(() => User)
+  @Mutation(() => UserR)
   async getUserByEmail(
     @Arg("email") email: string
-  ): Promise<User> {
-    return await User.findOneOrFail({ email });
+  ): Promise<UserR | undefined> {
+    console.log(email)
+    const user = await User.findOne({ email: email });
+    console.log(user);
+    return user;
   }
 
 
-  @Query(() => User)
+  @Mutation(() => UserR)
   async getUserById(
     @Arg("id") id: number
-  ): Promise<User> {
-    return await User.findOneOrFail(id);
+  ): Promise<UserR> {
+    const user = await User.findOneOrFail(id);
+    console.log(user);
+    return user;
+  }
+  @Query(() => UserR)
+  async getUserByIdQ(
+    @Arg("id") id: number
+  ): Promise<UserR> {
+    const user = await User.findOneOrFail(id);
+    console.log(user);
+    return user;
   }
 
   @Mutation(() => UserResponse)
@@ -237,6 +263,21 @@ export class UserResolver {
     req.session.userId = user.id;
     console.log(req.session);
     return { user: user };
+  }
+
+  @Query(() => [User])
+  async getSomeUsers(
+    @Arg("ids") ids: string,
+  ): Promise<User[]> {
+    let arr = [];
+    let arra = ids.split(",").filter((o) => o != " ");
+    console.log(arra)
+    for (let i = 0; i < arra.length; i++) {
+      console.log(arra[i])
+      const user = await User.findOneOrFail({ id: parseInt(arra[i]) });
+      arr.push(user);
+    }
+    return arr;
   }
 
   @Query(() => User, { nullable: true })

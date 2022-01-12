@@ -1,0 +1,7 @@
+mutation ReturnUserById($id: Float!) {
+  getUserById(id: $id) {
+    id
+    username
+    email
+  }
+}

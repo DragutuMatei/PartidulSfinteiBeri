@@ -38,7 +38,7 @@ let ProiecteResolver = class ProiecteResolver {
         return await Proiecte_1.Proiecte.create({
             sefId: values.sefId,
             numeleProiectului: values.numeleProiectului,
-            userId: values.userId + ", "
+            userId: values.userId
         }).save();
     }
     async deleteProiect(id) {
@@ -62,6 +62,9 @@ let ProiecteResolver = class ProiecteResolver {
             }
         });
         return pr;
+    }
+    async getAProiectById(id) {
+        return await Proiecte_1.Proiecte.findOneOrFail({ id });
     }
     async addUser(idUserAdd, proiectId) {
         const proiect = await Proiecte_1.Proiecte.findOne({ id: proiectId });
@@ -91,6 +94,13 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], ProiecteResolver.prototype, "getAllProiecte", null);
+__decorate([
+    (0, type_graphql_1.Query)(() => Proiecte_1.Proiecte),
+    __param(0, (0, type_graphql_1.Arg)("id")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], ProiecteResolver.prototype, "getAProiectById", null);
 __decorate([
     (0, type_graphql_1.Mutation)(() => Boolean),
     __param(0, (0, type_graphql_1.Arg)("idUserAdd")),

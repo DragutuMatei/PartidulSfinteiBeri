@@ -1,4 +1,4 @@
-query GetUserByEmail($email: String!) {
+mutation ReturnUserEmail($email: String!) {
   getUserByEmail(email: $email) {
     id
     username

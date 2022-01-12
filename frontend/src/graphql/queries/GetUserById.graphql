@@ -1,5 +1,5 @@
 query GetUserById($id: Float!) {
-  getUserById(id: $id) {
+  getUserByIdQ(id: $id) {
     id
     username
     email

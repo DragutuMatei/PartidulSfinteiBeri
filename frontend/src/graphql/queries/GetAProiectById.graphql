@@ -1,0 +1,8 @@
+query GetAProiectById($id: Float!) {
+  getAProiectById(id: $id) {
+    id
+    userId
+    numeleProiectului
+    sefId
+  }
+}
