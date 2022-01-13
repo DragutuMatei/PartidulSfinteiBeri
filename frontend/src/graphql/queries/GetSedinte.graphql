@@ -1,8 +1,9 @@
-query GetSedinte($proiectId:Float!){
-  getSedinte(proiectId:$proiectId){
+query GetSedinte {
+  getSedinte {
     id
     topic
     data
     proiectId
+    userId
   }
 }

@@ -1,11 +1,8 @@
-import { Box, Flex, Link } from "@chakra-ui/layout";
-import React, { useEffect, useRef } from "react";
+import { Link } from "@chakra-ui/layout";
 import NextLink from "next/link";
+import React, { useEffect } from "react";
 import { useGetLoggedUserQuery, useLogoutMutation } from "../generated/graphql";
-import { Button } from "@chakra-ui/button";
 import { isServer } from "../utils/isServer";
-import Lottie from "lottie-web";
-import { defineLordIconIllustration } from "lord-icon-illustration";
 
 interface NavbarProps {}
 

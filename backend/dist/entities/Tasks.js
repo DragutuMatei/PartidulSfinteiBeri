@@ -32,6 +32,11 @@ __decorate([
 __decorate([
     (0, type_graphql_1.Field)(),
     (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Tasks.prototype, "userName", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
 ], Tasks.prototype, "sefId", void 0);
 __decorate([

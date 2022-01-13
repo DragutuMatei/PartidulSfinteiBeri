@@ -4,7 +4,9 @@ import {
   useGetUserByIdQuery,
 } from "../generated/graphql";
 import NextLink from "next/link";
-import { useRouter } from "next/router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+
 interface ProiectProps {
   pr: {
     id: number;
@@ -16,7 +18,6 @@ interface ProiectProps {
 
 export const Proiect: React.FC<ProiectProps> = (props) => {
   const [plm] = useGetUserByIdQuery({ variables: { id: props.pr.sefId } });
-  const router = useRouter();
   const [, deleteProiet] = useDeleteProiectMutation();
 
   return (
@@ -30,7 +31,7 @@ export const Proiect: React.FC<ProiectProps> = (props) => {
           }
         }}
       >
-        X
+        <FontAwesomeIcon icon={faTimesCircle} style={{ padding: "5px" }} />
       </h1>
       <div className="description">
         <p>{props.pr.numeleProiectului}</p>

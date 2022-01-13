@@ -18,6 +18,10 @@ export class Tasks extends BaseEntity {
 
     @Field()
     @Column()
+    userName: string;
+
+    @Field()
+    @Column()
     sefId: number;
 
     @Field()

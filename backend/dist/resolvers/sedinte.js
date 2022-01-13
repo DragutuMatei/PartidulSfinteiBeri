@@ -27,6 +27,10 @@ __decorate([
 ], SedintaInput.prototype, "data", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
+    __metadata("design:type", String)
+], SedintaInput.prototype, "proiectId", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], SedintaInput.prototype, "userId", void 0);
 SedintaInput = __decorate([
@@ -36,8 +40,8 @@ let SedinteResolver = class SedinteResolver {
     async addSedinta(values) {
         return await Sedinte_1.Sedinte.create(Object.assign({}, values)).save();
     }
-    async getSedinte(proiectId) {
-        return await Sedinte_1.Sedinte.find({ proiectId });
+    async getSedinte({ req }) {
+        return await Sedinte_1.Sedinte.find({ userId: req.session.userId });
     }
     async deleteSedinta(sedintaId) {
         const sedinta = await Sedinte_1.Sedinte.delete({ id: sedintaId });
@@ -55,9 +59,9 @@ __decorate([
 ], SedinteResolver.prototype, "addSedinta", null);
 __decorate([
     (0, type_graphql_1.Query)(() => [Sedinte_1.Sedinte]),
-    __param(0, (0, type_graphql_1.Arg)("proiectId")),
+    __param(0, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], SedinteResolver.prototype, "getSedinte", null);
 __decorate([

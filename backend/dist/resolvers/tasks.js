@@ -27,6 +27,10 @@ __decorate([
 ], TaskInput.prototype, "userId", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
+    __metadata("design:type", String)
+], TaskInput.prototype, "userName", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], TaskInput.prototype, "sefId", void 0);
 __decorate([
@@ -53,6 +57,7 @@ let TasksResolver = class TasksResolver {
         return await Tasks_1.Tasks.create(Object.assign({}, values)).save();
     }
     async addPoints(taskId, points) {
+        console.log(taskId);
         const task = await Tasks_1.Tasks.update({ id: taskId }, { points });
         if (task) {
             return true;
@@ -66,9 +71,8 @@ let TasksResolver = class TasksResolver {
         return false;
     }
     async getTasks({ req }) {
-        const tasks = await Tasks_1.Tasks.find();
+        const tasks = await Tasks_1.Tasks.find({ order: { id: "DESC" } });
         let ts = [];
-        console.log(req.session.userId);
         tasks.forEach(task => {
             if (task.sefId == req.session.userId) {
                 ts.push(task);
@@ -78,6 +82,16 @@ let TasksResolver = class TasksResolver {
             }
         });
         return ts;
+    }
+    async deleteTask(taskId, { req }) {
+        const task = await Tasks_1.Tasks.findOne();
+        if ((task === null || task === void 0 ? void 0 : task.sefId) != req.session.userId) {
+            return false;
+        }
+        else {
+            await Tasks_1.Tasks.delete({ id: taskId });
+            return true;
+        }
     }
     async getTaskByProiect(proiectId) {
         return await Tasks_1.Tasks.find({ where: { proiectId: proiectId } });
@@ -112,6 +126,14 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], TasksResolver.prototype, "getTasks", null);
+__decorate([
+    (0, type_graphql_1.Mutation)(() => Boolean),
+    __param(0, (0, type_graphql_1.Arg)("taskId")),
+    __param(1, (0, type_graphql_1.Ctx)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, Object]),
+    __metadata("design:returntype", Promise)
+], TasksResolver.prototype, "deleteTask", null);
 __decorate([
     (0, type_graphql_1.Query)(() => [Tasks_1.Tasks]),
     __param(0, (0, type_graphql_1.Arg)("proiectId")),

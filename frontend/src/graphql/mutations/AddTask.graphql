@@ -6,5 +6,6 @@ mutation AddTask($values:TaskInput!){
     sefId
     proiectId
     deadline
+    userName
   }
 }

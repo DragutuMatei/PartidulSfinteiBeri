@@ -39,24 +39,29 @@ const dashboard: React.FC<dashboardProps> = ({}) => {
               email: "",
             }}
             onSubmit={async (e, { setErrors }) => {
-              if (sef.data?.getUserByIdQ.id)
-                await createProiect({
+              if (sef.data?.getUserByIdQ.id) {
+                const ok = await createProiect({
                   values: {
                     numeleProiectului: e.numeleProiectului,
                     sefId: sef.data?.getUserByIdQ.id!,
                     userId: "",
                   },
                 });
-              else {
-                console.log("plm");
+
+                if (!ok.error) {
+                  alert("Project created");
+                }
+              } else {
+                console.log("aia e");
               }
             }}
           >
             <Form>
               <div className="description">
+                <h2>Add Project</h2>
                 <InputField
                   name="numeleProiectului"
-                  placeholder="numeleProiectului"
+                  placeholder="Enter a description of the project"
                   textarea={true}
                 />
               </div>
@@ -71,7 +76,6 @@ const dashboard: React.FC<dashboardProps> = ({}) => {
             </Form>
           </Formik>
         </div>
-        <hr className="between" />
         <div className="projects-list">
           {data?.getAllProiecte.map((pr) => (
             <Proiect pr={pr} />

@@ -1,5 +1,6 @@
 import { Sedinte } from '../entities/Sedinte';
-import { Arg, Field, InputType, Mutation, Query, Resolver } from "type-graphql";
+import { Arg, Ctx, Field, InputType, Mutation, Query, Resolver, } from "type-graphql";
+import { MyContext } from 'src/types';
 
 @InputType()
 class SedintaInput {
@@ -8,6 +9,9 @@ class SedintaInput {
 
     @Field()
     data: string;
+
+    @Field()
+    proiectId: string;
 
     @Field()
     userId: number;
@@ -24,9 +28,9 @@ export class SedinteResolver {
 
     @Query(() => [Sedinte])
     async getSedinte(
-        @Arg("proiectId") proiectId: number
+        @Ctx() { req }: MyContext
     ): Promise<Sedinte[]> {
-        return await Sedinte.find({ proiectId });
+        return await Sedinte.find({ userId: req.session.userId });
     }
 
     @Mutation(() => Boolean)

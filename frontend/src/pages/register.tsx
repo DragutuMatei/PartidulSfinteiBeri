@@ -1,64 +1,84 @@
-import { Button } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import { withUrqlClient } from "next-urql";
 import { useRouter } from "next/dist/client/router";
 import React from "react";
 import { InputField } from "../components/InputField";
 import { Layout } from "../components/Layout";
-import { Wrapper } from "../components/Wrapper";
-import { useRegisterMutation } from "../generated/graphql";
+import {
+  useGetLoggedUserQuery,
+  useRegisterMutation,
+} from "../generated/graphql";
 import { createUrqlClient } from "../utils/createUrqlClient";
+import { isServer } from "../utils/isServer";
 import { toErrorMap } from "../utils/toErrorMap";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faKey } from "@fortawesome/free-solid-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
- 
+
 interface registerProps {}
 
 const Register: React.FC<registerProps> = ({}) => {
   const router = useRouter();
+
+  const [userLogged] = useGetLoggedUserQuery({
+    pause: isServer(),
+  });
+
+  if (userLogged.data?.getLoggedUser) {
+    router.push("./");
+  }
+
   const [, register] = useRegisterMutation();
   return (
     <Layout>
-      <Wrapper>
-        <Formik
-          initialValues={{ username: "", email: "", password: "" }}
-          onSubmit={async (values, { setErrors }) => {
-            const resp = await register({ optiuni: values });
-            if (resp.data?.register.errors) {
-              setErrors(toErrorMap(resp.data.register.errors));
-            } else if (resp.data?.register.user) {
-              router.push("/");
-            }
-          }}
-        >
-          {({ isSubmitting }) => {
-            return (
-              <Form className="register">
-                <div className="user-field">
-                <FontAwesomeIcon icon={faUser} id="user-icon" />
-                <InputField name="username" placeholder="username" class="user-input"/>
-                <FontAwesomeIcon icon={faEnvelope} id="user-icon" />
-                <InputField name="email" placeholder="email" class="email-input"/>
-                </div>
-                <div className="pass-field">
-                <FontAwesomeIcon icon={faKey} id="pass-icon" />
+      <div className="register">
+        <div className="user">
+          <Formik
+            initialValues={{ username: "", email: "", password: "" }}
+            onSubmit={async (values, { setErrors }) => {
+              console.log(values)
+              const resp = await register({ optiuni: values });
+              if (resp.data?.register.errors) {
+                setErrors(toErrorMap(resp.data.register.errors));
+              } else if (resp.data?.register.user) {
+                router.push("/dashboard");
+              }
+            }}
+          >
+            <Form className="form">
+              <header className="user__header">
+                <img
+                  src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg"
+                  alt=""
+                />
+                <h1 className="user__title">Register</h1>
+              </header>
+              <div className="form__group">
+                <InputField
+                  name="username"
+                  placeholder="username"
+                  class="user-input"
+                />
+              </div>
+              <div className="form__group">
+                <InputField
+                  name="email"
+                  placeholder="email"
+                  class="email-input"
+                />
+              </div>
+              <div className="form__group">
                 <InputField
                   name="password"
                   placeholder="password"
                   type="password"
                   class="pass-input"
                 />
-                </div>
-                <Button type="submit" isLoading={isSubmitting} id="register">
-                  Register
-                </Button>
-              </Form>
-            );
-          }}
-        </Formik>
-      </Wrapper>
+              </div>
+              <button type="submit" className="btn">
+                Register
+              </button>
+            </Form>
+          </Formik>
+        </div>
+      </div>
     </Layout>
   );
 };

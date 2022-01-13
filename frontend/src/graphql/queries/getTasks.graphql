@@ -1,0 +1,13 @@
+query GetTasks{
+    getTasks {
+        id
+        task
+        userId
+        sefId
+        userName
+        proiectId
+        points
+        finish
+        deadline
+    }
+}

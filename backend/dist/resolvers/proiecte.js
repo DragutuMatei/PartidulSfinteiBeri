@@ -12,7 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProiecteResolver = void 0;
+exports.ProiecteResolver = exports.ProiecteInput = void 0;
 const isAuth_1 = require("./../middleware/isAuth");
 const type_graphql_1 = require("type-graphql");
 const Proiecte_1 = require("../entities/Proiecte");
@@ -33,6 +33,7 @@ __decorate([
 ProiecteInput = __decorate([
     (0, type_graphql_1.InputType)()
 ], ProiecteInput);
+exports.ProiecteInput = ProiecteInput;
 let ProiecteResolver = class ProiecteResolver {
     async createProiect(values) {
         return await Proiecte_1.Proiecte.create({
@@ -51,9 +52,8 @@ let ProiecteResolver = class ProiecteResolver {
         return true;
     }
     async getAllProiecte({ req }) {
-        const proiecte = await Proiecte_1.Proiecte.find();
+        const proiecte = await Proiecte_1.Proiecte.find({ order: { id: "DESC" } });
         let pr = [];
-        console.log(req.session.userId);
         proiecte.forEach(proiect => {
             if (proiect.sefId == req.session.userId)
                 pr.push(proiect);

@@ -18,5 +18,9 @@ export class Sedinte extends BaseEntity {
 
     @Field()
     @Column()
-    proiectId: number;
+    proiectId: string;
+
+    @Field()
+    @Column()
+    userId: number;
 }

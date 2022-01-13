@@ -25,10 +25,15 @@ function Index() {
     <Layout>
       <div className="components">
         <div className="container">
-          <h1><cite><q>The key is not to spend time, but to invest it.</q></cite></h1>
-          <h3>
-          – Stephen R. Covey.
-          </h3>
+          <h1>
+            <cite>
+              <q>
+                The key is not to spend time,
+                <br /> but to invest it.
+              </q>
+            </cite>
+          </h1>
+          <h3>– Stephen R. Covey.</h3>
           <button>Click me !</button>
         </div>
         <div className="slider">
@@ -42,7 +47,10 @@ function Index() {
               <img src="/images/svg_2.svg" alt="" />
             </div>
             <div className="slider-card">
-              <h3>Time now can be by your side even more by adding a deadline to a task you added!</h3>
+              <h3>
+                Time now can be by your side even more by adding a deadline to a
+                task you added!
+              </h3>
               <img src="/images/svg_3.svg" alt="" />
             </div>
             <div className="slider-card">
@@ -54,7 +62,10 @@ function Index() {
               <img src="/images/svg_5.svg" alt="" />
             </div>
             <div className="slider-card">
-              <h3>With our modern but simple layout you can use our features with ease.</h3>
+              <h3>
+                With our modern but simple layout you can use our features with
+                ease.
+              </h3>
               <img src="/images/svg_6.svg" alt="" />
             </div>
           </div>
@@ -85,15 +96,23 @@ function Index() {
           </div>
           <div className="right">
             <p>
-            Unlike other apps like it,our web application is not going as in depth to be unique. Instead of adding thing after thing it goes the other way around and is unique in its simplicity. We aim for everyone to be able to easily make a team and start working right away.
-Monitor individual progress and overall progress. An archive with every file you've sent. Anouncments page for everyone in the team.
+              Unlike other apps like it,our web application is not going as in
+              depth to be unique. Instead of adding thing after thing it goes
+              the other way around and is unique in its simplicity. We aim for
+              everyone to be able to easily make a team and start working right
+              away. Monitor individual progress and overall progress. An archive
+              with every file you've sent. Anouncments page for everyone in the
+              team.
             </p>
           </div>
         </div>
         <div className="section">
           <div className="left">
             <p>
-            StateDate is a very simple time and resource managment web application. It aims to help people who want a straight forward and simple place to organize a project find a way to materialize their plans.
+              StateDate is a very simple time and resource managment web
+              application. It aims to help people who want a straight forward
+              and simple place to organize a project find a way to materialize
+              their plans.
             </p>
           </div>
           <div className="right">

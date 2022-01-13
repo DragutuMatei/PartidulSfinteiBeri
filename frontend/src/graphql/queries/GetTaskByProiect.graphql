@@ -4,6 +4,7 @@ query GetTaskByProiect($proiectId: Float!) {
     task
     userId
     sefId
+    userName
     proiectId
     points
     finish

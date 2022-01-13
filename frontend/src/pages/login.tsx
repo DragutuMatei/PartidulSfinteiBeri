@@ -1,66 +1,95 @@
-import { Box, Button, Link } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import { withUrqlClient } from "next-urql";
 import { useRouter } from "next/dist/client/router";
 import React, { useEffect } from "react";
 import { InputField } from "../components/InputField";
-import { Navbar } from "../components/Navbar";
-import { Wrapper } from "../components/Wrapper";
+import { Layout } from "../components/Layout";
 import { useGetLoggedUserQuery, useLoginMutation } from "../generated/graphql";
 import { createUrqlClient } from "../utils/createUrqlClient";
+import { isServer } from "../utils/isServer";
 import { toErrorMap } from "../utils/toErrorMap";
-import NextLink from "next/link";
-import { Layout } from "../components/Layout";
-import { route } from "next/dist/server/router";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faKey } from "@fortawesome/free-solid-svg-icons";
 
 const Login: React.FC<{}> = ({}) => {
   const router = useRouter();
   const [, login] = useLoginMutation();
 
+  const [userLogged] = useGetLoggedUserQuery({
+    pause: isServer(),
+  });
+
+  if (userLogged.data?.getLoggedUser) {
+    router.push("./");
+  }
+
   return (
     <Layout>
-      <div style={{ top: 100, position: "relative" }}>
-        <Formik
-          initialValues={{ usernameOrEmail: "", password: "" }}
-          onSubmit={async (values, { setErrors }) => {
-            const resp = await login(values);
-            if (resp.data?.login.errors) {
-              setErrors(toErrorMap(resp.data.login.errors));
-            } else if (resp.data?.login.user) {
-              if (typeof router.query.next === "string") {
-                router.push(router.query.next);
-                console.log(1);
+      <div className="register">
+        <div className="user">
+          <Formik
+            initialValues={{ usernameOrEmail: "", password: "" }}
+            onSubmit={async (values, { setErrors }) => {
+              const resp = await login(values);
+              if (resp.data?.login.errors) {
+                setErrors(toErrorMap(resp.data.login.errors));
+              } else if (resp.data?.login.user) {
+                router.push("/dashboard");
               } else {
-                router.back();
+                router.push("/");
               }
-            } else {
-              console.log(3);
-              router.push("/");
-            }
-          }}
-        >
-          {({ isSubmitting }) => {
-            return (
-              <Form className="login">
-                <div className="user-field">
-                <FontAwesomeIcon icon={faUser} id="user-icon" />
+            }}
+          >
+            <Form className="form">
+              <header className="user__header">
+                <img
+                  src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg"
+                  alt=""
+                />
+                <h1 className="user__title">Login</h1>
+              </header>
+              <div className="form__group">
                 <InputField
                   name="usernameOrEmail"
                   placeholder="username / email"
-                  class="user-input"
+                  className="form__input"
                 />
-                </div>
-                <div className="password-field">
-                <FontAwesomeIcon icon={faKey} id="pass-icon"/>
+              </div>
+              <div className="form__group">
                 <InputField
                   name="password"
                   placeholder="password"
                   type="password"
-                  class="pass-input"
-                /> 
+                  className="form__input"
+                />
+              </div>
+              <button type="submit" className="btn">
+                Login
+              </button>
+            </Form>
+          </Formik>
+        </div>
+      </div>
+
+      {/* <div style={{ top: 100, position: "relative" }}>
+    
+          {({ isSubmitting }) => {
+            return (
+              <Form className="login">
+                <div className="user-field">
+                  <FontAwesomeIcon icon={faUser} id="user-icon" />
+                  <InputField
+                    name="usernameOrEmail"
+                    placeholder="username / email"
+                    className="user-input"
+                  />
+                </div>
+                <div className="password-field">
+                  <FontAwesomeIcon icon={faKey} id="pass-icon" />
+                  <InputField
+                    name="password"
+                    placeholder="password"
+                    type="password"
+                    className="pass-input"
+                  />
                 </div>
                 <br />
                 <Button type="submit" isLoading={isSubmitting} id="login">
@@ -70,7 +99,7 @@ const Login: React.FC<{}> = ({}) => {
             );
           }}
         </Formik>
-      </div>
+      </div> */}
     </Layout>
   );
 };

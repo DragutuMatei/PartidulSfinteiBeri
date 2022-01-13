@@ -30,6 +30,7 @@ export type Mutation = {
   createProiect: Proiecte;
   deleteProiect: Scalars['Boolean'];
   deleteSedinta: Scalars['Boolean'];
+  deleteTask: Scalars['Boolean'];
   finish: Scalars['Boolean'];
   forgotPassword: Scalars['Boolean'];
   getUserByEmail: UserR;
@@ -80,6 +81,11 @@ export type MutationDeleteProiectArgs = {
 
 export type MutationDeleteSedintaArgs = {
   sedintaId: Scalars['Float'];
+};
+
+
+export type MutationDeleteTaskArgs = {
+  taskId: Scalars['Float'];
 };
 
 
@@ -151,11 +157,6 @@ export type QueryGetAProiectByIdArgs = {
 };
 
 
-export type QueryGetSedinteArgs = {
-  proiectId: Scalars['Float'];
-};
-
-
 export type QueryGetSomeUsersArgs = {
   ids: Scalars['String'];
 };
@@ -172,6 +173,7 @@ export type QueryGetUserByIdQArgs = {
 
 export type SedintaInput = {
   data: Scalars['String'];
+  proiectId: Scalars['String'];
   topic: Scalars['String'];
   userId: Scalars['Float'];
 };
@@ -180,8 +182,9 @@ export type Sedinte = {
   __typename?: 'Sedinte';
   data: Scalars['String'];
   id: Scalars['Float'];
-  proiectId: Scalars['Float'];
+  proiectId: Scalars['String'];
   topic: Scalars['String'];
+  userId: Scalars['Float'];
 };
 
 export type TaskInput = {
@@ -192,6 +195,7 @@ export type TaskInput = {
   sefId: Scalars['Float'];
   task: Scalars['String'];
   userId: Scalars['Float'];
+  userName: Scalars['String'];
 };
 
 export type Tasks = {
@@ -204,6 +208,7 @@ export type Tasks = {
   sefId: Scalars['Float'];
   task: Scalars['String'];
   userId: Scalars['Float'];
+  userName: Scalars['String'];
 };
 
 export type User = {
@@ -258,7 +263,7 @@ export type AddTaskMutationVariables = Exact<{
 }>;
 
 
-export type AddTaskMutation = { __typename?: 'Mutation', addTask: { __typename?: 'Tasks', id: number, task: string, userId: number, sefId: number, proiectId: number, deadline: string } };
+export type AddTaskMutation = { __typename?: 'Mutation', addTask: { __typename?: 'Tasks', id: number, task: string, userId: number, sefId: number, proiectId: number, deadline: string, userName: string } };
 
 export type AddUserMutationVariables = Exact<{
   idUserAdd: Scalars['Float'];
@@ -282,6 +287,13 @@ export type DeleteProiectMutationVariables = Exact<{
 
 export type DeleteProiectMutation = { __typename?: 'Mutation', deleteProiect: boolean };
 
+export type DeleteTaskMutationVariables = Exact<{
+  taskId: Scalars['Float'];
+}>;
+
+
+export type DeleteTaskMutation = { __typename?: 'Mutation', deleteTask: boolean };
+
 export type ReturnUserEmailMutationVariables = Exact<{
   email: Scalars['String'];
 }>;
@@ -295,6 +307,13 @@ export type ReturnUserByIdMutationVariables = Exact<{
 
 
 export type ReturnUserByIdMutation = { __typename?: 'Mutation', getUserById: { __typename?: 'UserR', id: number, username: string, email: string } };
+
+export type FinishTaskMutationVariables = Exact<{
+  taskId: Scalars['Float'];
+}>;
+
+
+export type FinishTaskMutation = { __typename?: 'Mutation', finish: boolean };
 
 export type LoginMutationVariables = Exact<{
   usernameOrEmail: Scalars['String'];
@@ -328,12 +347,10 @@ export type GetAllProiecteQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetAllProiecteQuery = { __typename?: 'Query', getAllProiecte: Array<{ __typename?: 'Proiecte', id: number, userId: string, numeleProiectului: string, sefId: number }> };
 
-export type GetSedinteQueryVariables = Exact<{
-  proiectId: Scalars['Float'];
-}>;
+export type GetSedinteQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetSedinteQuery = { __typename?: 'Query', getSedinte: Array<{ __typename?: 'Sedinte', id: number, topic: string, data: string, proiectId: number }> };
+export type GetSedinteQuery = { __typename?: 'Query', getSedinte: Array<{ __typename?: 'Sedinte', id: number, topic: string, data: string, proiectId: string, userId: number }> };
 
 export type GetSomeUsersQueryVariables = Exact<{
   ids: Scalars['String'];
@@ -347,7 +364,7 @@ export type GetTaskByProiectQueryVariables = Exact<{
 }>;
 
 
-export type GetTaskByProiectQuery = { __typename?: 'Query', getTaskByProiect: Array<{ __typename?: 'Tasks', id: number, task: string, userId: number, sefId: number, proiectId: number, points?: number | null | undefined, finish?: boolean | null | undefined, deadline: string }> };
+export type GetTaskByProiectQuery = { __typename?: 'Query', getTaskByProiect: Array<{ __typename?: 'Tasks', id: number, task: string, userId: number, sefId: number, userName: string, proiectId: number, points?: number | null | undefined, finish?: boolean | null | undefined, deadline: string }> };
 
 export type GetUserByIdQueryVariables = Exact<{
   id: Scalars['Float'];
@@ -360,6 +377,11 @@ export type GetLoggedUserQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetLoggedUserQuery = { __typename?: 'Query', getLoggedUser?: { __typename?: 'User', id: number, username: string, email: string } | null | undefined };
+
+export type GetTasksQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetTasksQuery = { __typename?: 'Query', getTasks: Array<{ __typename?: 'Tasks', id: number, task: string, userId: number, sefId: number, userName: string, proiectId: number, points?: number | null | undefined, finish?: boolean | null | undefined, deadline: string }> };
 
 export const RegularErrorFragmentDoc = gql`
     fragment RegularError on FieldError {
@@ -416,6 +438,7 @@ export const AddTaskDocument = gql`
     sefId
     proiectId
     deadline
+    userName
   }
 }
     `;
@@ -455,6 +478,15 @@ export const DeleteProiectDocument = gql`
 export function useDeleteProiectMutation() {
   return Urql.useMutation<DeleteProiectMutation, DeleteProiectMutationVariables>(DeleteProiectDocument);
 };
+export const DeleteTaskDocument = gql`
+    mutation DeleteTask($taskId: Float!) {
+  deleteTask(taskId: $taskId)
+}
+    `;
+
+export function useDeleteTaskMutation() {
+  return Urql.useMutation<DeleteTaskMutation, DeleteTaskMutationVariables>(DeleteTaskDocument);
+};
 export const ReturnUserEmailDocument = gql`
     mutation ReturnUserEmail($email: String!) {
   getUserByEmail(email: $email) {
@@ -480,6 +512,15 @@ export const ReturnUserByIdDocument = gql`
 
 export function useReturnUserByIdMutation() {
   return Urql.useMutation<ReturnUserByIdMutation, ReturnUserByIdMutationVariables>(ReturnUserByIdDocument);
+};
+export const FinishTaskDocument = gql`
+    mutation FinishTask($taskId: Float!) {
+  finish(taskId: $taskId)
+}
+    `;
+
+export function useFinishTaskMutation() {
+  return Urql.useMutation<FinishTaskMutation, FinishTaskMutationVariables>(FinishTaskDocument);
 };
 export const LoginDocument = gql`
     mutation Login($usernameOrEmail: String!, $password: String!) {
@@ -541,12 +582,13 @@ export function useGetAllProiecteQuery(options: Omit<Urql.UseQueryArgs<GetAllPro
   return Urql.useQuery<GetAllProiecteQuery>({ query: GetAllProiecteDocument, ...options });
 };
 export const GetSedinteDocument = gql`
-    query GetSedinte($proiectId: Float!) {
-  getSedinte(proiectId: $proiectId) {
+    query GetSedinte {
+  getSedinte {
     id
     topic
     data
     proiectId
+    userId
   }
 }
     `;
@@ -574,6 +616,7 @@ export const GetTaskByProiectDocument = gql`
     task
     userId
     sefId
+    userName
     proiectId
     points
     finish
@@ -608,4 +651,23 @@ export const GetLoggedUserDocument = gql`
 
 export function useGetLoggedUserQuery(options: Omit<Urql.UseQueryArgs<GetLoggedUserQueryVariables>, 'query'> = {}) {
   return Urql.useQuery<GetLoggedUserQuery>({ query: GetLoggedUserDocument, ...options });
+};
+export const GetTasksDocument = gql`
+    query GetTasks {
+  getTasks {
+    id
+    task
+    userId
+    sefId
+    userName
+    proiectId
+    points
+    finish
+    deadline
+  }
+}
+    `;
+
+export function useGetTasksQuery(options: Omit<Urql.UseQueryArgs<GetTasksQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GetTasksQuery>({ query: GetTasksDocument, ...options });
 };

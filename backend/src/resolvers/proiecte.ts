@@ -13,7 +13,8 @@ import {
 import { Proiecte } from '../entities/Proiecte';
 
 @InputType()
-class ProiecteInput {
+export class ProiecteInput {
+
     @Field()
     userId: string;
 
@@ -28,7 +29,6 @@ class ProiecteInput {
 export class ProiecteResolver {
 
     @Mutation(() => Proiecte)
-    // @UseMiddleware(isAuth)
     async createProiect(
         @Arg("values") values: ProiecteInput
     ): Promise<Proiecte> {
@@ -57,11 +57,9 @@ export class ProiecteResolver {
     async getAllProiecte(
         @Ctx() { req }: MyContext
     ): Promise<Proiecte[]> {
-        const proiecte = await Proiecte.find();
-
+        const proiecte = await Proiecte.find({ order: { id: "DESC" } });
         let pr = [] as Proiecte[];
 
-        console.log(req.session.userId);
         proiecte.forEach(proiect => {
             if (proiect.sefId == req.session.userId)
                 pr.push(proiect);
@@ -79,7 +77,6 @@ export class ProiecteResolver {
     ): Promise<Proiecte> {
         return await Proiecte.findOneOrFail({ id });
     }
-
 
     @Mutation(() => Boolean)
     async addUser(

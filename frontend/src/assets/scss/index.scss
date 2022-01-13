@@ -1,11 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
-$font: "Open Sans", sans-serif;
-
-$black-coffee: #3a2e39ff;
-$dark-slate-gray: #1e555cff;
-$champagne-pink: #f4d8cdff;
-$middle-yellow-red: #edb183ff;
-$red-salsa: #f15152ff;
+@import "./variabiles.scss";
 
 html {
   background-image: url(/images/back.svg);
@@ -14,10 +7,8 @@ html {
 
 .components {
   display: flex;
-  // background-image: url(/images/back.svg);
   min-height: 100vh;
   flex-direction: row;
-  // flex-wrap: wrap;
   justify-content: space-around;
   align-items: flex-start;
 
@@ -200,7 +191,7 @@ p {
   .navbar-dash-container {
     z-index: 99;
     display: flex;
-    position: fixed;
+    // position: fixed;
     flex-direction: column;
     background-color: white;
     width: min-content;
@@ -263,12 +254,11 @@ p {
   }
 
   .projects-container {
-    padding-left: 230px;
-    width: 100vw;
+    width: 100%;
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 
     button {
@@ -307,8 +297,22 @@ p {
     .add-project {
       display: flex;
       flex-direction: row;
-      height: 200px;
       padding: 20px;
+
+      h2 {
+        font-size: 30px;
+        text-align: center;
+        color: $black-coffee;
+        padding: 5px;
+      }
+      textarea {
+        width: 100%;
+        padding: 20px;
+        font-size: 17px;
+        color: $black-coffee;
+        border-radius: 10px;
+        min-height: 100px;
+      }
 
       div {
         padding: 8px;
@@ -340,6 +344,7 @@ p {
     align-items: center;
     margin-top: 20px;
     margin-bottom: 20px;
+    width: 100%;
 
     .project {
       display: flex;
@@ -347,6 +352,7 @@ p {
       border-left: 10px solid $dark-slate-gray;
       min-width: 350px;
       max-width: 500px;
+      padding: 10px;
       margin: 20px 10px;
       border-radius: 0 30px 30px 0;
       background: #ffffffcc;
@@ -380,6 +386,7 @@ p {
       .membri-lider {
         display: flex;
         flex-direction: row;
+        justify-content: space-around;
       }
     }
   }
@@ -390,10 +397,8 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transform: translateX(150%);
-  hr {
-    width: 75%;
-  }
+  width: 100%;
+
   textarea {
     outline: none;
     height: 100%;
@@ -426,7 +431,26 @@ p {
     flex-direction: column;
   }
   .project-descriptionn {
-    padding: 30px;
+    p {
+      font-family: $font;
+      padding: 30px;
+      color: $black-coffee;
+      font-size: 20px;
+      text-align: left;
+    }
+    textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 17px;
+      color: $black-coffee;
+      font-family: $font;
+    }
+  }
+  h1 {
+    font-size: 20px;
+    color: $dark-slate-gray;
+    text-align: center;
+    padding: 10px;
   }
   h6 {
     text-align: center;
@@ -491,7 +515,6 @@ p {
 .meeting-add {
   display: flex;
   flex-direction: column;
-  transform: translateX(280%);
   textarea {
     outline: none;
     height: 100%;
@@ -519,134 +542,131 @@ p {
   }
 }
 
-
 .register {
   margin-top: 100px;
-  margin-left: 270px;
+  // margin-left: 270px;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-top: 100px;
-  background-color: white;
-  width: 300px;
-  border-radius: 50px;
-  margin-left: 630px;
-  #pass-icon{
-    position: absolute;
-  }
+// form {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   padding-top: 100px;
+//   background-color: white;
+//   width: 300px;
+//   border-radius: 50px;
+//   margin-left: 630px;
+//   #pass-icon {
+//     position: absolute;
+//   }
 
-
-
-  .user-field {
-    #user-icon {
-      position: absolute;
-    }
-  }
-  .user-input {
-    border: none;
-    border-bottom: 2px solid #d1d1d4;
-    background: none;
-    padding: 5px;
-    padding-left: 24px;
-    font-weight: 700;
-    transition: 0.2s;
-    margin-bottom: 20px;
-    &:hover,
-    &:active,
-    &:focus {
-      outline: none;
-      border-bottom-color: #6a679e;
-    }
-  }
-  .email-input {
-    border: none;
-    border-bottom: 2px solid #d1d1d4;
-    background: none;
-    padding: 5px;
-    padding-left: 24px;
-    font-weight: 700;
-    transition: 0.2s;
-    margin-bottom: 20px;
-    &:hover,
-    &:active,
-    &:focus {
-      outline: none;
-      border-bottom-color: #6a679e;
-    }
-  }
-  .pass-input {
-    border: none;
-    border-bottom: 2px solid #d1d1d4;
-    background: none;
-    padding: 5px;
-    padding-left: 24px;
-    font-weight: 700;
-    transition: 0.2s;
-    margin-bottom: 20px;
-    &:hover,
-    &:active,
-    &:focus {
-      outline: none;
-      border-bottom-color: #6a679e;
-    }
-  }
-  label {
-    margin-top: 10px;
-  }
-  #login {
-    background: #fff;
-    font-size: 14px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    padding: 16px 20px;
-    border-radius: 26px;
-    border: 1px solid #d4d3e8;
-    text-transform: uppercase;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    width: 100px;
-    color: #4c489d;
-    box-shadow: 0px 2px 2px #5c5696;
-    cursor: pointer;
-    transition: 0.2s;
-    &:active,
-    &:hover,
-    &:focus {
-      border-color: #6a679e;
-      outline: none;
-    }
-    margin-bottom: 10px;
-  }
-  #register {
-    background: #fff;
-    font-size: 14px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    padding: 16px 20px;
-    border-radius: 26px;
-    border: 1px solid #d4d3e8;
-    text-transform: uppercase;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    width: 100px;
-    color: #4c489d;
-    box-shadow: 0px 2px 2px #5c5696;
-    cursor: pointer;
-    transition: 0.2s;
-    &:active,
-    &:hover,
-    &:focus {
-      border-color: #6a679e;
-      outline: none;
-    }
-  }
-}
+//   .user-field {
+//     #user-icon {
+//       position: absolute;
+//     }
+//   }
+//   .user-input {
+//     border: none;
+//     border-bottom: 2px solid #d1d1d4;
+//     background: none;
+//     padding: 5px;
+//     padding-left: 24px;
+//     font-weight: 700;
+//     transition: 0.2s;
+//     margin-bottom: 20px;
+//     &:hover,
+//     &:active,
+//     &:focus {
+//       outline: none;
+//       border-bottom-color: #6a679e;
+//     }
+//   }
+//   .email-input {
+//     border: none;
+//     border-bottom: 2px solid #d1d1d4;
+//     background: none;
+//     padding: 5px;
+//     padding-left: 24px;
+//     font-weight: 700;
+//     transition: 0.2s;
+//     margin-bottom: 20px;
+//     &:hover,
+//     &:active,
+//     &:focus {
+//       outline: none;
+//       border-bottom-color: #6a679e;
+//     }
+//   }
+//   .pass-input {
+//     border: none;
+//     border-bottom: 2px solid #d1d1d4;
+//     background: none;
+//     padding: 5px;
+//     padding-left: 24px;
+//     font-weight: 700;
+//     transition: 0.2s;
+//     margin-bottom: 20px;
+//     &:hover,
+//     &:active,
+//     &:focus {
+//       outline: none;
+//       border-bottom-color: #6a679e;
+//     }
+//   }
+//   label {
+//     margin-top: 10px;
+//   }
+//   #login {
+//     background: #fff;
+//     font-size: 14px;
+//     margin-top: 30px;
+//     margin-bottom: 30px;
+//     padding: 16px 20px;
+//     border-radius: 26px;
+//     border: 1px solid #d4d3e8;
+//     text-transform: uppercase;
+//     font-weight: 700;
+//     display: flex;
+//     align-items: center;
+//     width: 100px;
+//     color: #4c489d;
+//     box-shadow: 0px 2px 2px #5c5696;
+//     cursor: pointer;
+//     transition: 0.2s;
+//     &:active,
+//     &:hover,
+//     &:focus {
+//       border-color: #6a679e;
+//       outline: none;
+//     }
+//     margin-bottom: 10px;
+//   }
+//   #register {
+//     background: #fff;
+//     font-size: 14px;
+//     margin-top: 30px;
+//     margin-bottom: 30px;
+//     padding: 16px 20px;
+//     border-radius: 26px;
+//     border: 1px solid #d4d3e8;
+//     text-transform: uppercase;
+//     font-weight: 700;
+//     display: flex;
+//     align-items: center;
+//     width: 100px;
+//     color: #4c489d;
+//     box-shadow: 0px 2px 2px #5c5696;
+//     cursor: pointer;
+//     transition: 0.2s;
+//     &:active,
+//     &:hover,
+//     &:focus {
+//       border-color: #6a679e;
+//       outline: none;
+//     }
+//   }
+// }
 
 .all2 {
   display: flex;
@@ -654,35 +674,33 @@ form {
 }
 
 .all {
-  .tasks-list-deadline{
+  .tasks-list-deadline {
     margin-left: 250px;
   }
-  .meeting-container{
-    .meeting-add{
+  .meeting-container {
+    .meeting-add {
       margin-left: 200px;
       margin-top: 100px;
     }
   }
-  .projects-container{
+  .projects-container {
     .between {
       margin-top: 50px;
     }
-    .add-project{
-      transform: translateX(-30%);
+    .add-project {
+      // transform: translateX(-30%);
       button {
-        transform: translateY(50%);
+        // transform: translateY(50%);
       }
       textarea {
         resize: none;
       }
       form {
         width: 250px;
-      } 
+      }
     }
   }
 }
-
-
 
 @media (max-width: 700px) {
   .components {
@@ -700,15 +718,10 @@ form {
       }
     }
   }
-  .all2 {
-    form {
-      margin-left: 40px;
-    }
-  }
 }
 
 .all2 {
-  .aboutTxt{
+  .aboutTxt {
     p {
       font-weight: bold;
       padding-top: 50px;
@@ -720,9 +733,6 @@ form {
   .all {
     display: flex;
     flex-direction: column;
-    form {
-      padding-top: 240px;
-    }
     .add-project {
       display: flex;
       flex-direction: column;
@@ -743,24 +753,245 @@ form {
   }
 }
 
-@media screen and (max-width: 600px) {
-  .topnav a:not(:first-child) {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 17px;
+  color: $black-coffee;
+  font-family: $font;
+  border: none;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 17px;
+  color: $black-coffee;
+  font-family: $font;
+  border: none;
+}
+input[type="datetime-local"] {
+  width: 100%;
+  margin: 0;
+}
+
+#checkk {
+  text-align: center;
+  align-self: center;
+}
+
+.h2 {
+  font-size: 20px;
+  color: $dark-slate-gray;
+  text-align: center;
+  padding: 10px;
+}
+
+.task-descriptionn {
+  textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    font-size: 17px;
+    color: $black-coffee;
+    font-family: $font;
+    border: none;
+    margin: 5px 0;
   }
 }
 
-@media screen and (max-width: 600px) {
-  .navbar {position: relative;}
-  .navbar .logo {
-    position: absolute;
-    right: 0;
-    top: 0;
+.task-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  .task {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px;
+    border: 2px solid $red-salsa;
+    margin: 20px 0;
+
+    .taskk {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin: 0;
+
+      div {
+        margin: 10px 0;
+      }
+
+      .top {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      .down {
+        height: auto;
+        display: flex;
+        width: auto;
+        justify-content: space-around;
+        align-items: center;
+
+        h3 {
+          font-size: 20px;
+          font-family: $font;
+          color: $dark-slate-gray;
+        }
+        svg {
+          position: relative;
+          cursor: pointer;
+        }
+      }
+    }
+    p {
+      font-size: 18px;
+      color: $black-coffee;
+      font-family: $font;
+      padding: 0 10px;
+    }
+    .rating {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin: 10px 0;
+    }
+
+    .nota {
+      background: $red-salsa;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 30px;
+    }
   }
-  .navbar li, ul {
-    float: none;
-    display: block;
-    text-align: left;
+}
+
+.deadlines {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  .deadline {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px;
+    border: 2px solid $red-salsa;
+    margin: 20px 0;
+
+    h1 {
+      padding: 5px;
+      color: $black-coffee;
+      font-size: 25px;
+      font-family: $font;
+    }
+    h2 {
+      padding: 5px;
+      color: $black-coffee;
+      font-size: 20px;
+      font-family: $font;
+    }
+    p {
+      padding: 5px;
+      color: $black-coffee;
+      font-size: 18px;
+      font-family: $font;
+    }
+  }
+}
+
+.meetings {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  .meeting-add {
+    margin-top: 50px;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      textarea {
+        margin: 0 !important;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 10px;
+        font-size: 20px;
+        color: $black-coffee;
+        font-size: 18px;
+        font-family: $font;
+      }
+    }
+  }
+
+  .meeting-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    .meeting {
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 10px;
+      border: 2px solid $red-salsa;
+      margin: 20px 0;
+
+      h3 {
+        padding: 5px;
+        color: $black-coffee;
+        font-size: 25px;
+        font-family: $font;
+      }
+      h4 {
+        padding: 5px;
+        color: $black-coffee;
+        font-size: 20px;
+        font-family: $font;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .navbar {
+    ul .logo {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .components{
+    flex-direction: column;
+
+    .slider{
+      width: 100vw;
+    }
   }
 }

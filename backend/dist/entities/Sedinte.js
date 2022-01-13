@@ -32,8 +32,13 @@ __decorate([
 __decorate([
     (0, type_graphql_1.Field)(),
     (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
+    __metadata("design:type", String)
 ], Sedinte.prototype, "proiectId", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], Sedinte.prototype, "userId", void 0);
 Sedinte = __decorate([
     (0, type_graphql_1.ObjectType)(),
     (0, typeorm_1.Entity)()
