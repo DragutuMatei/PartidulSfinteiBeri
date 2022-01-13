@@ -5,3 +5,4 @@ yarn install (instalarea tuturor pachetelor)
 cd frontend si npm run dev (dechiderea frontendului)
 cd backend si npm run dev (dechiderea backendului)
 
+NU UITATI SA VA UITATI IN desene.js PT UN MIC EASTER EGG
