@@ -4,3 +4,4 @@ comenzi:
 yarn install (instalarea tuturor pachetelor)
 cd frontend si npm run dev (dechiderea frontendului)
 cd backend si npm run dev (dechiderea backendului)
+
