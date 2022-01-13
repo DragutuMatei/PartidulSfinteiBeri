@@ -11,10 +11,21 @@ export const Navbar_Dash: React.FC<Navbar_DashProps> = ({}) => {
     pause: isServer(),
   });
 
+
+  const resizefct = () => {
+    if (window.innerWidth < 700) {
+      document.querySelectorAll("ul li").forEach(p => {
+        p.classList.toggle("show");
+      })
+    }
+  }
+
   return (
     <div className="navbar-dash-container">
       <ul>
-        <li className="profile">
+        <li className="profile" onClick={() => {
+          resizefct();
+        }}>
           <img src="/images/img1.png" alt="user-img" />
           <div className="user-email">
             <h3 className="username">{data?.getLoggedUser?.username}</h3>

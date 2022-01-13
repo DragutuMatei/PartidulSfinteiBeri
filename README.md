@@ -1,0 +1,1 @@
+Acesta este proiectul de la Hackathon Phoenix Coding Contest 2022. Am dezvoltat

@@ -36,6 +36,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
       <ul>
         <div className="logo">
           <img src="/images/logo.svg" style={{ width: 50 }} alt="" />
+          <h5>StateDate</h5>
         </div>
         <NextLink href="/">
           <li>Home</li>

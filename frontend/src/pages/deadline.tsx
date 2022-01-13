@@ -1,14 +1,24 @@
 import { withUrqlClient } from "next-urql";
+import { useRouter } from "next/router";
 import React from "react";
 import { Layout_Dash } from "../components/Layout_Dash";
-import { useGetTasksQuery } from "../generated/graphql";
+import { useGetLoggedUserQuery, useGetTasksQuery } from "../generated/graphql";
 import { createUrqlClient } from "../utils/createUrqlClient";
+import { isServer } from "../utils/isServer";
 
 interface deadlineProps {}
 
 const deadline: React.FC<deadlineProps> = ({}) => {
   const [{ data }] = useGetTasksQuery();
 
+  const router = useRouter();
+  const [userLogged] = useGetLoggedUserQuery({
+    pause: isServer(),
+  });
+
+  if (!userLogged.data?.getLoggedUser) {
+    router.push("./login");
+  }
   return (
     <Layout_Dash>
       <div className="deadlines">

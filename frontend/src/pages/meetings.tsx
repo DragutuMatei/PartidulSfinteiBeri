@@ -1,6 +1,7 @@
 import { Button, Select } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import { withUrqlClient } from "next-urql";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { InputField } from "../components/InputField";
 import { Layout_Dash } from "../components/Layout_Dash";
@@ -21,6 +22,10 @@ const meetings: React.FC<meetingsProps> = ({}) => {
   const [, addMeeting] = useAddSedintaMutation();
   const [id, setId] = useState<string>();
   const [sedinte] = useGetSedinteQuery();
+  const router = useRouter();
+  if (!loggedUser.data?.getLoggedUser) {
+    router.push("./login");
+  }
 
   return (
     <Layout_Dash>
